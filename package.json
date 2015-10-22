@@ -1,0 +1,26 @@
+{
+  "name": "Project1",
+  "version": "1.0.0",
+  "description": "APIKey",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FrancescaLong/Project1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sf-wdi-22-23/apikey/issues"
+  },
+  "homepage": "https://github.com/FrancescaLong/Project1.git",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "dotenv": "^1.2.0",
+    "ejs": "^2.3.4",
+    "express": "^4.12.3",
+    "request": "^2.65.0"
+  }
+}
