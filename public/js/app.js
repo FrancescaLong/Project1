@@ -55,7 +55,7 @@ $(document).ready(function(){
 		function init() {
 			updateDisplay();
 			// Inject the icon if applicable
-			if ($button.find('.state-icon').length == 0) {
+			if ($button.find('.state-icon').length === 0) { // changed from == original code to ===
 				$button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i>');
 			}
 		}
@@ -85,6 +85,9 @@ $(document).ready(function(){
                 $('#carousel-text').html($('#slide-content-'+id).html());
         });
 
+
+
+/* Search snippit - bootstrap */
 
 
 

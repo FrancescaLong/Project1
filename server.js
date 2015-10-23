@@ -33,7 +33,7 @@ var request = require('request');
 var foods;
 var info;
 
-request('http://food2fork.com/api/search?key='+FOOD_API_KEY+'&q=chocolate', function (error, response, body) {
+request('http://food2fork.com/api/search?key='+FOOD_API_KEY+'&q=romanesco', function (error, response, body) {
   if (!error && response.statusCode == 200) {
     // This API sends the data as a string so we need to parse it. This is not typical.
     foods = JSON.parse(body).recipes;
