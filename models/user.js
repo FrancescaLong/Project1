@@ -2,9 +2,16 @@
 
 // require dependencies
 var mongoose = require('mongoose'),
-  Schema = mongoose.Schema,
-  bcrypt = require('bcrypt'),
-  salt = bcrypt.genSaltSync(10);
+    Schema = mongoose.Schema,
+    bcrypt = require('bcrypt'),
+    salt = bcrypt.genSaltSync(10),
+    express = require('express'),
+    app = express(),
+    ejs = require('ejs');
+
+//require the module
+require('dotenv').load(); //npm install dotenv --save
+
 
 var UserSchema = new Schema({
   email: String,
