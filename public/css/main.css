@@ -31,6 +31,12 @@
 	font-size: 125%;	
 }
 
+.item {
+	display: block;
+	margin-left: auto;
+    margin-right: auto;
+}
+
 /* Login snippit */
 /* Credit to bootsnipp.com for the css for the color graph */
 .colorgraph {

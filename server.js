@@ -44,6 +44,14 @@ app.get('/', function(req, res) {
     res.render('index',{foods:foods});
 });
 
+app.get('/artichoke', function(req, res) {
+    res.render('artichoke.html',{foods:foods});
+});
+
+app.get('/asparagus', function(req, res) {
+    res.render('asparagus.ejs',{foods:foods});
+});
+
 
 app.listen(3000, function (){
   console.log("listening on port 3000");
