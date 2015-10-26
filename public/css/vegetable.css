@@ -15,6 +15,21 @@
     font-size: 400%;
 }
 
+.recipeTitle {
+    padding-left: 47px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: green;
+    font-size: .5em;
+}
+
+.recipeList {
+    padding-left: 47px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 1.5em;
+}
+
 /* Thumbnails from Bootstrap */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,700,400italic);
 
@@ -212,7 +227,7 @@ body {
     position: fixed;
     left: 25%;
 }
-li.ui-state-default{
+/*li.ui-state-default{
     background:#fff0;
     border:none;
     border-bottom:1px solid #ddd;
@@ -222,7 +237,7 @@ li.ui-state-default{
 
 li.ui-state-default:last-child{
     border-bottom:none;
-}
+}*/
 
 @import url(http://fonts.googleapis.com/css?family=Roboto:400);
 body {
@@ -279,9 +294,9 @@ button {
  border-radius:0;
 }
 
-h3 { 
+/*h3 { 
  border:0 solid #efefef; 
  border-bottom-width:1px;
  padding-bottom:10px;
-}
+}*/
 

@@ -108,7 +108,7 @@ app.get('/sunchoke', function(req, res) {
 
 
 
-app.get('/artichoke/recipe1', function(req, res) {
+app.get('/recipe1', function(req, res) {
     res.render('recipe1.ejs',{foods:foods});
 });
 
