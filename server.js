@@ -44,8 +44,8 @@ app.get('/', function(req, res) {
     res.render('index',{foods:foods});
 });
 
-app.get('/artichoke', function(req, res) {
-    res.render('artichoke.html',{foods:foods});
+app.get('/artichoke.html', function(req, res) {
+    res.render('artichoke.html');
 });
 
 app.get('/asparagus', function(req, res) {
