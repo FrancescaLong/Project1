@@ -13,6 +13,7 @@ app.set('view engine', 'ejs');
 // serve js & css files
 app.use("/static", express.static("public"));
 // body parser config to accept our datatypes
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
@@ -45,7 +46,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/artichoke.html', function(req, res) {
-    res.render('artichoke.html');
+    res.render('artichoke.ejs');
 });
 
 app.get('/asparagus', function(req, res) {
@@ -53,7 +54,7 @@ app.get('/asparagus', function(req, res) {
 });
 
 
-app.listen(3000, function (){
+app.listen(process.env.PORT || 3000, function (){
   console.log("listening on port 3000");
 });
 
