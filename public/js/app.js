@@ -66,7 +66,7 @@ $(document).ready(function(){
 
 /* Carousel snippit */
         $('#myCarousel').carousel({
-                interval: 5000
+                interval: 20000
         });
  
         $('#carousel-text').html($('#slide-content-0').html());
