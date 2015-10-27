@@ -20,7 +20,7 @@
     padding-top: 20px;
     padding-bottom: 20px;
     color: green;
-    font-size: .5em;
+    font-size: 2em;
 }
 
 .recipeList {
@@ -29,6 +29,17 @@
     padding-bottom: 20px;
     font-size: 1.5em;
 }
+
+
+/* Recipe formatting */
+.div {
+    padding-left: 47px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+
 
 /* Thumbnails from Bootstrap */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,700,400italic);
@@ -57,20 +68,6 @@ body {
 }
 
 
-/* Recipe formatting */
-.div {
-    padding-left: 47px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-
-.recipeTitle {
-    padding-left: 47px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    color: green;
-    font-size: 400%;
-}
 
 
 
