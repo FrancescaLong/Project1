@@ -23,14 +23,6 @@ var UserSchema = new Schema({
   //maybe include the veg_Id here as well for likes?
 });
 
-var VegSchema = new Schema({
-  name: String,
-  recipeId: {
-    rId1: String,
-    rId2: String,
-    rId3: String
-  },
-});
 
 
 // create a new user with secure (hashed) password

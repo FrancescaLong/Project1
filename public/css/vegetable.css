@@ -221,7 +221,7 @@ body {
 /* Comment formatting - from bootstrap */
 .container {
     padding: 25px;
-    position: fixed;
+    position: relative;  /* was fixed - it kept the veggie pics locked in the middle of the page*/
     left: 25%;
 }
 /*li.ui-state-default{
