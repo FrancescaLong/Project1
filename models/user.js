@@ -15,13 +15,22 @@ require('dotenv').load(); //npm install dotenv --save
 
 // also see express heroku app (linked in funnybiz)
 var UserSchema = new Schema({
-  email: { type: String,
+    email: { type: String,
            required: true,
            unique: true
          },
   passwordDigest: String  // hashed and salted version
+  //maybe include the veg_Id here as well for likes?
 });
 
+var VegSchema = new Schema({
+  name: String,
+  recipeId: {
+    rId1: String,
+    rId2: String,
+    rId3: String
+  },
+});
 
 
 // create a new user with secure (hashed) password

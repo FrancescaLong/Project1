@@ -54,16 +54,38 @@
       <li></li>
       <li></li>
     </ol>
+  
+
   </div>
+ <!--  <div id="page-wrapper" class="container">
+    <header class="page-header">
+      <h1>API Key <small>CHOCOLATE</small></h1>
+    </header>
+    <div class="row">
+ -->
+      <% for(var i=0; i<foods.length; i++) { %>
+            <h3><%=foods[i].title%></h3>
+            <a href="<%=foods[i].source_url%>">
+      <!-- <div class="col-sm-2 col-md-3"> my edits which stair step the results - badly-->
+      <!-- <div class="col-sm-6 col-md-4"> original tiled view-->
+        <div class="thumbnail">
+          <img src=<%=foods[i].image_url%>>
+          <div class="caption">
+          </div>
+        </div>
+      </div>
+      <% } %>
+
+
 
 </body>
+<!-- </script>
 </script>
 </script>
-</script>
-
+ -->
 <!-- Comments  -->
 
-<div class="container">
+<!-- <div class="container">
     <div class="col-lg-4 col-sm-6 text-center">
     <div class="well">
         <h4>What is on your mind?</h4>
@@ -92,8 +114,8 @@
 </div>
 
 
+ -->
 
-</head>
 </html>
 
 

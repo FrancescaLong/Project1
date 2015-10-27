@@ -1,9 +1,32 @@
 // REQUIREMENTS //
 //var path = require("path"),  //npm install path --save
+// require dependencies
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema,
+    express = require('express'),
+    app = express(),
+    ejs = require('ejs');
+
+//require the module
+require('dotenv').load(); //npm install dotenv --save
+
+
+var VegSchema = new Schema({
+  name: String,
+  altName: String,
+  searchName: String,
+  recipeId: {
+    rId: String
+  },
+  mainImgUrl: String,
+  vegPageImgUrl: {
+    url: String
+  },
+});
 
 
 
-    
+ //Bootsnips for the pictures on the veggie page   
 	/*Menu-toggle*/
     $("#menu-toggle").click(function(e) {
         e.preventDefault();

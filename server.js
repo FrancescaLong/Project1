@@ -9,7 +9,7 @@ var express = require("express"),  //npm install express --save
     session = require('express-session');
 
 
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/simple-login');
 var User = require('./models/user');
 
 // CONFIG //
@@ -105,16 +105,9 @@ var request = require('request');
 var foods;
 var info;
 
-request('http://food2fork.com/api/search?key='+FOOD_API_KEY+'&q=artichoke', function (error, response, body) {
-  if (!error && response.statusCode == 200) {
-    // This API sends the data as a string so we need to parse it. This is not typical.
-    foods = JSON.parse(body).recipes;
-  }
-});
 
 
-var query = "artichoke";
-//var query = $(this).("h2");
+/*
 
 //Wikipedia search query for their API
     var options = {query: query, format: "html", summaryOnly: false}; //set to true for summary only
@@ -126,7 +119,7 @@ var query = "artichoke";
     console.log("Query successful[query=%s, html-formatted-wiki-text=%s]", query, htmlWikiText);
     });
 
-
+*/
 
 
 
@@ -179,8 +172,18 @@ app.get('/sunchoke', function(req, res) {
 
 
 
-app.get('/recipe1', function(req, res) {
+app.get('/artichoke/recipe1', function(req, res) {
+    var query = "artichoke";
+    //var query = $(this).("title");
+    request('http://food2fork.com/api/search?key='+FOOD_API_KEY+'&q='+query, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+    // This API sends the data as a string so we need to parse it. This is not typical.
+    foods = JSON.parse(body).recipes;
     res.render('recipe1.ejs',{foods:foods});
+
+    }
+  });
+    console.log(foods);
 });
 
 
