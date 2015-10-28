@@ -26,7 +26,7 @@
       <span class="icon-bar"></span>
     </button>
     <a class="navbar-brand" href="/">Home</a>
-    <a class="navbar-brand" href="./">Back to your veggie</a>
+    <a class="navbar-brand" href="../">Back to your veggie</a>
   </div>
 
   <div class="div">
@@ -41,16 +41,14 @@
         </div>
     </div>
   </div>
-  <% } %>
-
   <div class="div">
     <h6 class="recipeTitle">Ingredients</h6>
       <ul>
         <% for(var i=0; i<recipe.ingredients.length; i++) { %>    
         <li> <%=recipe.ingredients[i]%> </li>
+  <% } %>
       </ul>
   </div>
-  <% } %>
   <br>
 
   <div>
@@ -64,7 +62,7 @@
   </div>
 
   <div>
-    <foter>Powered by Food2Fork.com</footer>
+    <footer>Powered by Food2Fork.com</footer>
     <a href="http://Food2Fork.com"></a>
   </div>
 
