@@ -13,7 +13,7 @@ var express = require("express"),  //npm install express --save
 //mongoose.connect('mongodb://localhost/simple-login');
 
 //Heroku suggestion on how to connect
-mongoURI = 'mongodb://localhost/simple-login';
+mongoURI = 'mongodb://localhost/veggie';
 mongoose.connect(process.env.MONGOLAB_URI || mongoURI);
 
 var User = require('./models/user');
