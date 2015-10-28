@@ -15,6 +15,9 @@ The API currently used in the app is Food2Fork.
 Libraries used include:
 	Bootsnipp.com
 
+Problems
+	1. 
+
 Future Development
 	1. Include the Wikipedia API to provide more information about the vegetable.
 	2. Implement comments in the recipe section that will allow users to comment.

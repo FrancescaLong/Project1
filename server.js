@@ -9,7 +9,13 @@ var express = require("express"),  //npm install express --save
     session = require('express-session');
 
 
-mongoose.connect('mongodb://localhost/simple-login');
+//original connection
+//mongoose.connect('mongodb://localhost/simple-login');
+
+//Heroku suggestion on how to connect
+mongoURI = 'mongodb://localhost/simple-login';
+mongoose.connect(process.env.MONGOLAB_URI || mongoURI);
+
 var User = require('./models/user');
 
 // CONFIG //
@@ -129,6 +135,15 @@ app.get('/', function(req, res) {
     res.render('index',{foods:foods});
 });
 
+
+app.get('/signup', function(req, res){
+    res.render('signup.ejs');
+});
+
+app.get('/logout', function(req, res){
+    res.render('logout.ejs');
+});
+
 app.get('/artichoke', function(req, res) {
     res.render('artichoke.ejs');
 });
@@ -183,7 +198,7 @@ app.get('/artichoke/moreRecipes', function(req, res) {
     res.render('moreRecipes.ejs',{foods:foods});
     }
   });
-    //console.log(foods);
+    console.log(foods);
 });
 
 
@@ -200,8 +215,9 @@ app.get('/artichoke/recipe1', function(req, res) {
     console.log({recipe:recipe});
     }
   });
-    console.log(recipe);
+    //console.log(recipe);
 });
+
 
 
 

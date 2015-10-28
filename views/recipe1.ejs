@@ -26,11 +26,11 @@
       <span class="icon-bar"></span>
     </button>
     <a class="navbar-brand" href="/">Home</a>
-    <a class="navbar-brand" href="../">Back to your veggie</a>
+    <a class="navbar-brand" href="./">Back to your veggie</a>
   </div>
 
   <div class="div">
-    <h3 class="recipeTitle"><%=recipe.title%>></h3>
+    <h3 class="recipeTitle"><%=recipe.title%></h3>
   </div>
   <br>
 
@@ -52,18 +52,15 @@
   <br>
 
   <div>
-    <h6 class="recipeTitle">Instructions</h6>
-      <ul class="recipeList">
-        <li>Follow the instructions on the author's site</li>
-          <a href="<%=recipe.source_url%>">
-        <li>wave magic wand</li>
-        <li>clown hats</li>
+    <h6 class="recipeTitle">Instructions
+        <a href="<%=recipe.source_url%>" target="_blank">
+        <br><small> Follow the instructions on the author's site</h6></a>
       </ul>
   </div>
 
   <div>
-    <footer>Powered by Food2Fork.com</footer>
-    <a href="http://Food2Fork.com"></a>
+    <a href="http://Food2Fork.com" target="_blank">
+    <footer>Powered by Food2Fork.com</footer></a>
   </div>
 
 </body>
