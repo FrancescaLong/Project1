@@ -24,63 +24,49 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
-        </button>
+    </button>
     <a class="navbar-brand" href="/">Home</a>
     <a class="navbar-brand" href="./">Back to your veggie</a>
   </div>
 
-
-<!--     <div class="div">
+  <div class="div">
     <h3 class="recipeTitle"><%=recipe.title%>></h3>
   </div>
-<br>
+  <br>
+
   <div>
-        <div class="thumbnail">
-          <img src=<%=recipe.image_url%>>
-          <div class="caption">
-          </div>
+    <div class="thumbnail">
+      <img src=<%=recipe.image_url%>>
+        <div class="caption">
         </div>
-      </div>
-      <% } %>
-</div> -->
+    </div>
+  </div>
+  <% } %>
 
-
-    <div class="div">
+  <div class="div">
     <h6 class="recipeTitle">Ingredients</h6>
-<!--     <ul class="recipeList">
-      <li>veggie</li>
-      <li>magic</li>
-      <li>clown hats</li>
-      <li></li>
-      <li></li>
-    </ul>
- -->
+      <ul>
+        <% for(var i=0; i<recipe.ingredients.length; i++) { %>    
+        <li> <%=recipe.ingredients[i]%> </li>
+      </ul>
+  </div>
+  <% } %>
+  <br>
 
-
-<!--     <ul>
-      <!% for(var i=0; i<ingredients.length; i++) { %>    get rid of the ! at the beginning
-            <li><%=ingredients[i].ingredient%></li>
-        </ul>
-      </div>
-      <% } %>
- -->  </div>
-<br>
   <div>
     <h6 class="recipeTitle">Instructions</h6>
-    <ul class="recipeList">
-      <li>Follow the instructions on the author's site</li>
-      <a href=="<%=recipe.source_url%>">
-      <li>wave magic wand</li>
-      <li>clown hats</li>
-      <li></li>
-      <li></li>
-    </ul>
+      <ul class="recipeList">
+        <li>Follow the instructions on the author's site</li>
+          <a href="<%=recipe.source_url%>">
+        <li>wave magic wand</li>
+        <li>clown hats</li>
+      </ul>
   </div>
- <!--  <div id="page-wrapper" class="container">
-    <header class="page-header">
-      <h1>API Key <small>CHOCOLATE</small></h1>
-    </header>
-    <div class="row">
- -->
+
+  <div>
+    <foter>Powered by Food2Fork.com</footer>
+    <a href="http://Food2Fork.com"></a>
+  </div>
+
 </body>
 </html>
