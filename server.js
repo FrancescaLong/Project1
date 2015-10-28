@@ -103,6 +103,7 @@ var request = require('request');
 
 //get API data
 var foods;
+var recipe;
 var info;
 
 
@@ -172,19 +173,50 @@ app.get('/sunchoke', function(req, res) {
 
 
 
-app.get('/artichoke/recipe1', function(req, res) {
+app.get('/artichoke/moreRecipes', function(req, res) {
     var query = "artichoke";
     //var query = $(this).("title");
     request('http://food2fork.com/api/search?key='+FOOD_API_KEY+'&q='+query, function (error, response, body) {
     if (!error && response.statusCode == 200) {
     // This API sends the data as a string so we need to parse it. This is not typical.
     foods = JSON.parse(body).recipes;
-    res.render('recipe1.ejs',{foods:foods});
+    res.render('moreRecipes.ejs',{foods:foods});
+    }
+  });
+    //console.log(foods);
+});
 
+
+
+app.get('/artichoke/recipe1', function(req, res) {
+    var recipeId = "72b297";
+    //var query = "artichoke";
+    //var query = $(this).("title");
+    request('http://food2fork.com/api/get?key='+FOOD_API_KEY+'&rId='+recipeId, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+    // This API sends the data as a string so we need to parse it. This is not typical.
+    recipe = JSON.parse(body).recipe;
+    res.render('recipe1.ejs',{recipe:recipe});
+    console.log({recipe:recipe});
+    }
+  });
+    console.log(recipe);
+});
+
+
+
+/*app.get('/artichoke/moreRecipes', function(req, res) {
+    var query = "artichoke";
+    //var query = $(this).("title");
+    request('http://food2fork.com/api/search?key='+FOOD_API_KEY+'&q='+query, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+    // This API sends the data as a string so we need to parse it. This is not typical.
+    foods = JSON.parse(body).recipes;
+    res.render('moreRecipes.ejs',{foods:foods});
     }
   });
     console.log(foods);
-});
+});*/
 
 
 
