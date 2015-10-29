@@ -169,7 +169,7 @@ app.post('/api/search', function(req, res) {
     foods = JSON.parse(body).recipes;
     //console.log("foods",foods);
 
-    res.render('moreRecipes.ejs',{foods:foods});
+    res.render('moreRecipes.ejs',{foods:foods, queryveggie:query});
     }
   });
     //console.log(foods);

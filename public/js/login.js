@@ -13,7 +13,7 @@ console.log('sanity check: client-side js LOGIN.JS loaded');
     var signupData = $("#signup-form").serialize();
     console.log(signupData);
     // send POST request to /users with the form data
-    $.post('/user-show', signupData, function(response) {
+    $.post('/user-show.ejs', signupData, function(response) {
       console.log(response);
     });
   });
