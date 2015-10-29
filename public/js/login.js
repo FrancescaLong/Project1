@@ -19,6 +19,8 @@ console.log('sanity check: client-side js LOGIN.JS loaded');
   });
 
 
+
+
   $('#login-form').on('submit', function(e) {
     e.preventDefault();
     // select the form and serialize its data
@@ -30,6 +32,8 @@ console.log('sanity check: client-side js LOGIN.JS loaded');
       console.log(response);
     });
   });
+
+
 
 
 });  //  CLOSING TAGS

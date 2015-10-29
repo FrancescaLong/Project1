@@ -1,51 +1,23 @@
-console.log('sanity check: client-side js loaded');
-
-
-/*  Signin and Signup information */
-
 $(document).ready(function() {
-  $('#signup-form').on('submit', function(e) {
-    e.preventDefault();
 
-    // select the form and serialize its data
-    var signupData = $("#signup-form").serialize();
-    console.log(signupData);
-    // send POST request to /users with the form data
-    $.post('/user-show', signupData, function(response) {
-      console.log(response);
-    });
-  });
+console.log('sanity check: client-side scripts.js is loaded');
 
 
-  $('#login-form').on('submit', function(e) {
-    e.preventDefault();
+/*  Signin and Signup information  - MOVED TO LOGIN.JS*/
 
-    // select the form and serialize its data
-    // note: this is the form because the event handler
-    //   was triggered from the form
-    var loginData = $(this).serialize();
-    // send POST request to /login with the form data
-    $.post('/login', loginData, function(response) {
-      console.log(response);
-    });
-  });
+
 
 
 /*  Veggie Search */
 
+/* SIMPLIFIED AND MOVED TO APP.JS
 function veggieSearch(){
   // if there is local storage items, get that, otherwise create an empty array
   this.$submitButton = $('#veggieBtn');
 }
 
-/*VeggieSearch.prototype.addEventListeners = function(){
-  // so we have access to 'this', aka our 'app' aka 'MicroBlog'
-  // var blog = this;
-  this.$submitButton.on('click', function(event){
-    event.preventDefault();
-    blog.createPost(blog.$post.val());
-  });
-}*/
+
+
 
 VeggieSearch.prototype.addEventListeners = function(){
   $('#veggieBtn').on('click', function(event) {
@@ -74,11 +46,23 @@ VeggieSearch.prototype.addEventListeners = function(){
     });
   });  
 };
+*/
+
+
 
 
 }); // CLOSING TAGS
 
-  
+/*VeggieSearch.prototype.addEventListeners = function(){
+  // so we have access to 'this', aka our 'app' aka 'MicroBlog'
+  // var blog = this;
+  this.$submitButton.on('click', function(event){
+    event.preventDefault();
+    blog.createPost(blog.$post.val());
+  });
+}*/
+
+
  //      '/moreRecipes', loginData, function(response) {
  
 /*

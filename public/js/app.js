@@ -2,6 +2,8 @@
 // On page load
 $(document).ready(function(){
 console.log('sanity check: client-side js APP.JS loaded');
+
+
 var vegSearch = new veggieSearch();
 vegSearch.addEventListeners();
 
@@ -33,18 +35,6 @@ vegSearch.addEventListeners();
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 /* ALL incorporated below
 VeggieSearch.prototype.addEventListeners = function(){
   // so we have access to 'this', aka our 'app' aka 'MicroBlog'
@@ -59,10 +49,9 @@ VeggieSearch.prototype.addEventListeners = function(){
 
 
 
-
-
-
 }); // CLOSING TAGS
+
+
 
 
 /* SEARCH FOR ADDITIONAL VEGGIES */
