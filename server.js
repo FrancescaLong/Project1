@@ -129,6 +129,7 @@ app.get('/sunchoke', function(req, res) {
 /* Pull the pictures and links for the moreRecipes page*/
 app.get('/artichoke/moreRecipes', function(req, res) {
     var query = "artichoke";
+    console.log("the 10 veggie is "+query);
     //var query = $(this).("title");
     request('http://food2fork.com/api/search?key='+FOOD_API_KEY+'&q='+query, function (error, response, body) {
     if (!error && response.statusCode == 200) {
@@ -161,7 +162,7 @@ app.get('/artichoke/recipe1', function(req, res) {
 /* VEGETABLE SEARCH API */
 app.post('/api/search', function(req, res) {
     var query = req.body.veggie;
-    console.log("this is the query", query);
+    console.log("this is the search query", query);
     //var query = $(this).("title");
     request('http://food2fork.com/api/search?key='+FOOD_API_KEY+'&q='+query, function (error, response, body) {
     if (!error && response.statusCode == 200) {

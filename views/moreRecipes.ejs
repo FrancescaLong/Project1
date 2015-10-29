@@ -27,7 +27,7 @@
     </button>
     <!--     <a class="navbar-brand" href="../index.ejs">Home</a> -->
     <a class="navbar-brand" href="/">Home</a>
-    <% if(queryveggie===null) { %>
+    <% if(typeof queryveggie == "undefined") { %>
       <a class="navbar-brand" href="./">Back to your veggie</a>
       <% } else { %> <span class="navbar-brand" >The veggie you searched was <%= queryveggie %> </span>
     <% } %> 
