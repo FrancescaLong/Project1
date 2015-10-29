@@ -137,7 +137,7 @@ app.get('/artichoke/moreRecipes', function(req, res) {
     res.render('moreRecipes.ejs',{foods:foods});
     }
   });
-    console.log(foods);
+    //console.log(foods);
 });
 
 
@@ -151,7 +151,7 @@ app.get('/artichoke/recipe1', function(req, res) {
     // This API sends the data as a string so we need to parse it. This is not typical.
     recipe = JSON.parse(body).recipe;
     res.render('recipe1.ejs',{recipe:recipe});
-    console.log({recipe:recipe});
+    //console.log({recipe:recipe});
     }
   });
     //console.log(recipe);
@@ -167,7 +167,7 @@ app.post('/api/search', function(req, res) {
     if (!error && response.statusCode == 200) {
     // This API sends the data as a string so we need to parse it. This is not typical.
     foods = JSON.parse(body).recipes;
-    console.log("foods",foods);
+    //console.log("foods",foods);
 
     res.render('moreRecipes.ejs',{foods:foods});
     }

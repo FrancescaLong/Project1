@@ -94,9 +94,9 @@ VeggieSearch.prototype.addEventListeners = function(){
 
 function veggieSearch(){
   this.$submitButton = $('#veggieBtn');
-  console.log($('#veggieBtn'));
+  //console.log($('#veggieBtn')); 
   this.$veggie = $('#veggieSearch');
-  console.log($('#veggieSearch'));
+  //console.log($('#veggieSearch'));
 }
 
 
