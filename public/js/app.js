@@ -99,11 +99,14 @@ function veggieSearch(){
   //console.log($('#veggieSearch'));
 }
 
+veggieSearch.prototype.addEventListeners = function(){   //VeggieSearch.prototype.addEventListeners
+};
+
 
 //element.addEventListener("click", function(){ alert("Hello World!"); });
 //document.getElementById("myBtn").addEventListener("click", function(){
-veggieSearch.prototype.addEventListeners = function(){   //VeggieSearch.prototype.addEventListeners
-  	console.log('is this happening?');
+//veggieSearch.prototype.addEventListeners = function(){   //VeggieSearch.prototype.addEventListeners
+  	//console.log('is this happening?');
   // 	this.$submitButton.on('click', function(event) {
   //   event.preventDefault();
   //   console.log('button was clicked');
@@ -131,5 +134,5 @@ veggieSearch.prototype.addEventListeners = function(){   //VeggieSearch.prototyp
   //       }
   //   });
   // });  
-};
+//};
 //});
