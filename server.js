@@ -16,7 +16,7 @@ var express = require("express"),  //npm install express --save
 mongoURI = 'mongodb://localhost/veggie';
 mongoose.connect(process.env.MONGOLAB_URI || mongoURI);
 
-var User = require('./models/user.js');
+var User = require('./models/userModel.js');
 
 // CONFIG //
 // set ejs as view engine
@@ -202,24 +202,19 @@ app.post('/api/search', function(req, res) {
 /* Create Users, Login, Logout, Authentication  */
 
 // show the login form
-app.get('/login', function (req, res) {
-  res.render('login.ejs');
-});
-
 app.get('/signup', function (req, res){
     res.render('signup.ejs');
 });
 
+app.get('/login', function (req, res) {
+  res.render('login.ejs');
+});
+
 app.get('/user-show', function (req, res){
-    res.render('user-show.ejs');
+    User.find({_id:req.session.userId}, function(err, user){
+    res.render('user-show.ejs', {user:user});      
+    });
 });
-
-
-/*  THIS IS DUPLICATED BELOW
-app.get('/logout', function(req, res){
-    res.render('logout.ejs');
-});
-*/
 
 app.get('/logout', function (req, res) {
   // remove the session user id
@@ -234,9 +229,10 @@ app.get('/logout', function (req, res) {
 // create a user 
 app.post('/users', function (req, res) {
   console.log(req.body);
-  User.createSecure(req.body.email, req.body.password, function (err, newUser) {
+  User.createSecure(req.body.userName, req.body.email, req.body.password, function (err, newUser) {
     req.session.userId = newUser._id;
     res.redirect('/profile');
+  console.log("it worked!");
   });
 });
 

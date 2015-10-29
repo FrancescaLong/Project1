@@ -4,44 +4,35 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     bcrypt = require('bcrypt'),
-    salt = bcrypt.genSaltSync(10),
-    express = require('express'),
-    app = express(),
-    ejs = require('ejs');
-
-//require the module
-require('dotenv').load(); //npm install dotenv --save
+    salt = bcrypt.genSaltSync(10);
 
 
-var User = mongoose.model('User', consoleSchema);
+
 
 // also see express heroku app (linked in funnybiz)
 var UserSchema = new Schema({
-    userName: {type: String, required: true, unique: true, select: true},
-    email: { type: String,
-           required: true,
-           unique: true,
-           select: false /* this will prevent the email from being returned 
+    userName: {type: String, required: true, unique: true},
+    email:    {type: String, required: true, unique: true},
+           /* this will prevent the email from being returned 
            every time - MAY BREAK THINGS - will need to send the regular email 
            address in the validataion because the hash is not returned */
-         },
-    passwordDigest: String,  // hashed and salted version
-  //maybe include the veg_Id here as well for likes?
-  veg_Id: String
+    passwordDigest: String  // hashed and salted version  
+    //veg_Id: [type: String]  //maybe include the veg_Id here as well for likes?
 });
 
 
  // FROM BRAUS
- var UserSchema = new Schema({
+/* 
+var UserSchema = new Schema({
     email: String,
     passwordDigest: String
  });
-
+*/
 
 
 
 // create a new user with secure (hashed) password
-UserSchema.statics.createSecure = function (email, password, callback) {
+UserSchema.statics.createSecure = function (userName, email, password, callback) {
   // `this` references our schema  (???? MODEL??? )
   // store it in variable `user` because `this` changes context in nested callbacks
   console.log("this inside createSecure: ", this);
@@ -55,6 +46,7 @@ UserSchema.statics.createSecure = function (email, password, callback) {
 
       // create the new user (save to db) with hashed password
       UserModel.create({    
+        userName: userName,
         email: email,
         passwordDigest: hash
       }, callback);
@@ -97,6 +89,7 @@ UserSchema.methods.checkPassword = function (password) {
 
 
 
+/* THESE NEED TO REMAIN AT THE BOTTOM OF THE FILE OR THE DATA WILL NOT BE CREATED PROPERLY  */
 
 // define user model
 var User = mongoose.model('User', UserSchema);
