@@ -1,4 +1,8 @@
 // REQUIREMENTS //
+$(document).ready(function(){
+console.log('sanity check: client-side js LOGIN.JS loaded');
+
+
 //var path = require("path"),  //npm install path --save
 // require dependencies
 var mongoose = require('mongoose'),
@@ -10,21 +14,34 @@ var mongoose = require('mongoose'),
 //require the module
 require('dotenv').load(); //npm install dotenv --save
 
+/*
+var Veg = mongoose.model('Veg', vegSchema);
 
-var VegSchema = new Schema({
+
+var vegSchema = new Schema({
   name: String,
   altName: String,
   searchName: String,
-  recipeId: {
-    rId: String
-  },
+  rId: String,
   mainImgUrl: String,
   vegPageImgUrl: {
     url: String
   },
 });
 
+*/
 
+/* make a new Console document */
+/*var artichoke = new Veg ({
+ name: 'artichoke',
+ altName: null,
+ searchName: 'artichoke',
+ rId: {'72b297','',''},
+ mainImgUrl: 'http://i.imgur.com/ScPBYbG.jpg',
+ vegPageImgUrl: {'http://i.imgur.com/kc7cO4d.jpg','http://i.imgur.com/MJAhrSd.jpg','http://i.imgur.com/xXs9EI5.jpg'}
+});
+
+*/
 
  //Bootsnips for the pictures on the veggie page   
 	/*Menu-toggle*/
@@ -51,7 +68,10 @@ var VegSchema = new Schema({
         }
     });
 
- 
+});   // CLOSING TAGS
+
+
+
 
 /*
 //Wikipedia search query for their API - moved the the server.js file since we want node to work with this

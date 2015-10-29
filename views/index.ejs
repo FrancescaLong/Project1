@@ -28,17 +28,19 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" ></a> <!--href="#"-->
+        <a class="navbar-brand"></a> <!--href="#"-->
       </div>
 
 
        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="/signup">Sign up <span class="sr-only">(current)</span></a></li>
+          <li class="active"><a href="/login">Login <span class="sr-only">(current)</span></a></li>
+          <li><a href="/signup">Sign up <span class="sr-only">(current)</span></a></li>
           <li><a href="/logout">Logout</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Find my veggie! <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
+
+          <li class="dropdown navbar-center">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Pick my veggie! <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu" id="veggieDropdown">
               <li><a href="/artichoke">Artichoke</a></li>
               <li><a href="/asparagus">Asparagus</a></li>
               <li><a href="/eggplant">Eggplant</a></li>
@@ -51,11 +53,15 @@
               <li><a href="/sunchoke">Sunchoke</a></li>
             </ul>
           </li>
+
+
           <li>
-              <input type="text" class="  search-query form-control" placeholder="I don't see my veggie!" />
-              <button class="btn btn-danger glyphicon glyphicon-search" type="button" value="Shazaam!">
+          <form action='/api/search' method="POST">
+              <input type="text" class="search-query form-control" placeholder="I don't see my veggie!" name="veggie" id="veggieSearch"/>
+        
+              <button class="btn btn-danger glyphicon glyphicon-search" type="submit" id="veggieBtn"></button>
+              </form>
 <!--                 <span class=" "></span> -->
-              </button>
           </li>
         </ul>
 
@@ -95,6 +101,8 @@
   <input type="submit" value="Find my veggie!">
 </form>
  -->
+
+<!--  This is the pretty login buttons from Bootsnipp but I don't have time now to get them going
         <form id="signin" class="navbar-form navbar-right" role="form">
           <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -108,7 +116,7 @@
 
           <button type="submit" class="btn btn-primary">Login</button>
         </form>
-
+ -->
       </div>
     </div>
   </nav>
@@ -225,7 +233,7 @@
                                 <div id="slide-content-8">
                                     <h2>Spaghetti Squash</h2>
                                     <p>Slice the squash in half (from the stem to the end) and scrape the seeds out of the middle. Cover the cut sides with olive oil and bake at 400 degrees for 40 to 50 minutes. When tender, scrape the squash out of the shell and serve with any sort of topping you like (including spaghetti sauce!</p>
-                                    <p class="sub-text">More information and recipes - <a href="/spaghettisquash/spaghettisquash.ejs">Read more</a></p>
+                                    <p class="sub-text">More information and recipes - <a href="/spaghettisquash/spaghettisquash.ejs" >Read more</a></p>
                                 </div>
 
                                 <div id="slide-content-9">

@@ -12,16 +12,31 @@ var mongoose = require('mongoose'),
 //require the module
 require('dotenv').load(); //npm install dotenv --save
 
+/*
+var User = mongoose.model('User', consoleSchema);
 
 // also see express heroku app (linked in funnybiz)
 var UserSchema = new Schema({
+    userName: {type: String, required: true, unique: true, select: true},
     email: { type: String,
            required: true,
-           unique: true
-         },
-  passwordDigest: String  // hashed and salted version
+           unique: true,
+           select: false /* this will prevent the email from being returned 
+           every time - MAY BREAK THINGS - will need to send the regular email 
+           address in the validataion because the hash is not returned */
+         //},
+/*    passwordDigest: String,  // hashed and salted version
   //maybe include the veg_Id here as well for likes?
+  veg_Id: String
 });
+
+*/
+ // FROM BRAUS
+ var UserSchema = new Schema({
+    email: String,
+    passwordDigest: String
+ });
+
 
 
 

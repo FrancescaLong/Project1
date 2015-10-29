@@ -1,67 +1,12 @@
 // CLIENT-SIDE JAVASCRIPT
 // On page load
 $(document).ready(function(){
+console.log('sanity check: client-side js APP.JS loaded');
+var vegSearch = new veggieSearch();
+vegSearch.addEventListeners();
 
+//veggieSearch.prototype.addEventListeners();
 
-	/* Login snippit */
-	$(function(){
-		$('.button-checkbox').each(function(){
-			var $widget = $(this),
-			$button = $widget.find('button'),
-			$checkbox = $widget.find('input:checkbox'),
-			color = $button.data('color'),
-			settings = {
-				on: {
-					icon: 'glyphicon glyphicon-check'
-				},
-				off: {
-					icon: 'glyphicon glyphicon-unchecked'
-				}
-			};
-
-			$button.on('click', function () {
-				$checkbox.prop('checked', !$checkbox.is(':checked'));
-				$checkbox.triggerHandler('change');
-				updateDisplay();
-			});
-
-			$checkbox.on('change', function () {
-				updateDisplay();
-			});
-
-			function updateDisplay() {
-				var isChecked = $checkbox.is(':checked');
-			// Set the button's state
-			$button.data('state', (isChecked) ? "on" : "off");
-
-			// Set the button's icon
-			$button.find('.state-icon')
-			.removeClass()
-			.addClass('state-icon ' + settings[$button.data('state')].icon);
-
-			// Update the button's color
-			if (isChecked) {
-				$button
-				.removeClass('btn-default')
-				.addClass('btn-' + color + ' active');
-			}
-			else
-			{
-				$button
-				.removeClass('btn-' + color + ' active')
-				.addClass('btn-default');
-			}
-		}
-		function init() {
-			updateDisplay();
-			// Inject the icon if applicable
-			if ($button.find('.state-icon').length === 0) { // changed from == original code to ===
-				$button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i>');
-			}
-		}
-		init();
-	});
-});
 
 
 /* Carousel snippit */
@@ -87,8 +32,104 @@ $(document).ready(function(){
 
 
 
-/* Search snippit - bootstrap */
+
+/*  Signin and Signup information FROM BRIANNA*/
+
+  $('#signup-form').on('submit', function(event) {
+    event.preventDefault();
+    // select the form and serialize its data
+    var signupData = $("#signup-form").serialize();
+    console.log(signupData);
+    // send POST request to /users with the form data
+    $.post('/user-show', signupData, function(response) {
+      console.log(response);
+    });
+  });
+
+
+  $('#login-form').on('submit', function(e) {
+    e.preventDefault();
+    // select the form and serialize its data
+    // note: this is the form because the event handler
+    //   was triggered from the form
+    var loginData = $(this).serialize();
+    // send POST request to /login with the form data
+    $.post('/login', loginData, function(response) {
+      console.log(response);
+    });
+  });
 
 
 
-});
+
+
+
+
+
+
+
+
+
+/* ALL incorporated below
+VeggieSearch.prototype.addEventListeners = function(){
+  // so we have access to 'this', aka our 'app' aka 'MicroBlog'
+  // var blog = this;
+  this.$submitButton.on('click', function(event){
+    event.preventDefault();
+    blog.createPost(blog.$post.val());
+  });
+}
+*/
+
+
+
+
+
+
+
+}); // CLOSING TAGS
+
+
+/* SEARCH FOR ADDITIONAL VEGGIES */
+
+function veggieSearch(){
+  this.$submitButton = $('#veggieBtn');
+  console.log($('#veggieBtn'));
+  this.$veggie = $('#veggieSearch');
+  console.log($('#veggieSearch'));
+}
+
+
+//element.addEventListener("click", function(){ alert("Hello World!"); });
+//document.getElementById("myBtn").addEventListener("click", function(){
+veggieSearch.prototype.addEventListeners = function(){   //VeggieSearch.prototype.addEventListeners
+  	console.log('is this happening?');
+  // 	this.$submitButton.on('click', function(event) {
+  //   event.preventDefault();
+  //   console.log('button was clicked');
+  //   // select the input box and serialize its data
+  //   // note: this is the form because the event handler
+  //   //   was triggered from the form
+  //   var veggie = {};
+  //   veggie.veggie = $('#veggieSearch').val();
+  //   console.log("the veggie obj", veggie.veggie);
+  //   var url = 'api/search';
+  //   // send POST request to /login with the form data
+  //   $.ajax({
+  //       url: url,
+  //       type: 'POST', //we want to return the data, not POST to the API server
+  //       dataType: 'json',
+  //       data: veggie,
+  //       success: function (data) {
+  //       	console.log(data)
+  //       //alert(JSON.stringify(data));
+  //       //console.log({foods:foods});
+  //       //res.render('moreRecipes.ejs',{foods:foods});
+  //       },
+  //       error: function(){
+  //         alert("Cannot get data");
+  //       }
+  //   });
+  // });  
+};
+//});
