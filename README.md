@@ -20,8 +20,9 @@ Problems
 
 Future Development
 	1. Include the Wikipedia API to provide more information about the vegetable.
-	2. Implement comments in the recipe section that will allow users to comment.
-	3. Include more than 10 veggies.
-	4. Allow users to search for any veggie they might be looking for.  
+	2. If the Wikipedia API will not work, write up the text for those pages.
+	3. Implement comments in the recipe section that will allow users to comment.
+	4. Allow users to identify their favorite vegetables.
+	5. .  
 
 

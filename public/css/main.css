@@ -7,6 +7,10 @@
 	font-size: 400%;
 }
 
+::first-letter { 
+    font-size: 115%;
+}
+
 .emphasize {
 	font-style: italic;
 	font-weight: 900;

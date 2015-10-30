@@ -17,7 +17,7 @@ var asparagus = new Veg ({
  	searchName: 'asparagus',
  	rId: ['5cc4a8','35731','35729'],
  	mainImgUrl: 'http://i.imgur.com/iVbEqFth.jpg',
- 	vegPageImgUrl: ['http://i.imgur.com/kc7cO4d.jpg','http://i.imgur.com/MJAhrSd.jpg','http://i.imgur.com/xXs9EI5.jpg']
+ 	vegPageImgUrl: ['','','']
 });
 asparagus.save();
 		
@@ -27,7 +27,7 @@ var eggplant = new Veg ({
  	searchName: 'eggplant',
  	rId: ['36284','36277','38eaa8'],
  	mainImgUrl: 'http://i.imgur.com/yfTxSE1h.jpg',
- 	vegPageImgUrl: ['http://i.imgur.com/kc7cO4d.jpg','http://i.imgur.com/MJAhrSd.jpg','http://i.imgur.com/xXs9EI5.jpg']
+ 	vegPageImgUrl: ['','','']
 });
 eggplant.save();
 		
@@ -37,8 +37,8 @@ var kailan = new Veg ({
  	searchName: 'kailan',
  	rId: ['48195','7770','e3d914'],
  	mainImgUrl: 'http://i.imgur.com/rdiJZbWh.jpg',
- 	vegPageImgUrl: ['http://i.imgur.com/kc7cO4d.jpg','http://i.imgur.com/MJAhrSd.jpg','http://i.imgur.com/xXs9EI5.jpg']
-});
+ 	vegPageImgUrl: ['','','']
+ });
 kailan.save();
 		
 var kohlrabi = new Veg ({
@@ -47,8 +47,8 @@ var kohlrabi = new Veg ({
  	searchName: 'kohlrabi',
  	rId: ['26936','0d5c38','10386'],
  	mainImgUrl: 'http://i.imgur.com/xmOQox0h.jpg?1',
- 	vegPageImgUrl: ['http://i.imgur.com/kc7cO4d.jpg','http://i.imgur.com/MJAhrSd.jpg','http://i.imgur.com/xXs9EI5.jpg']
-});
+ 	vegPageImgUrl: ['','','']
+ });
 kohlrabi.save();
 		
 var okra = new Veg ({
@@ -57,8 +57,8 @@ var okra = new Veg ({
  	searchName: 'okra',
  	rId: ['36731','14753','26946'],
  	mainImgUrl: 'http://i.imgur.com/XfAzfzzh.jpg',
- 	vegPageImgUrl: ['http://i.imgur.com/kc7cO4d.jpg','http://i.imgur.com/MJAhrSd.jpg','http://i.imgur.com/xXs9EI5.jpg']
-});
+ 	vegPageImgUrl: ['','','']
+ });
 okra.save();
 	
 var romanesco = new Veg ({
@@ -67,8 +67,8 @@ var romanesco = new Veg ({
  	searchName: 'romanesco',
  	rId: ['9a85c3','45428'],
  	mainImgUrl: 'http://i.imgur.com/eB1Scpwh.jpg?2',
- 	vegPageImgUrl: ['http://i.imgur.com/kc7cO4d.jpg','http://i.imgur.com/MJAhrSd.jpg','http://i.imgur.com/xXs9EI5.jpg']
-});
+ 	vegPageImgUrl: ['','','']
+ });
 romanesco.save();
 		
 var rutabaga = new Veg ({
@@ -77,8 +77,8 @@ var rutabaga = new Veg ({
  	searchName: 'rutabaga',
  	rId: ['36574','27328','9683'],
  	mainImgUrl: 'http://i.imgur.com/oYsj0N4h.jpg',
- 	vegPageImgUrl: ['http://i.imgur.com/kc7cO4d.jpg','http://i.imgur.com/MJAhrSd.jpg','http://i.imgur.com/xXs9EI5.jpg']
-});
+ 	vegPageImgUrl: ['','','']
+ });
 rutabaga.save();
 		
 var spaghettisquash = new Veg ({
@@ -87,8 +87,8 @@ var spaghettisquash = new Veg ({
  	searchName: 'spaghettisquash',
  	rId: ['29769','54325','48239'],
  	mainImgUrl: 'http://i.imgur.com/zLn7Vk3h.jpg',
- 	vegPageImgUrl: ['http://i.imgur.com/kc7cO4d.jpg','http://i.imgur.com/MJAhrSd.jpg','http://i.imgur.com/xXs9EI5.jpg']
-});
+ 	vegPageImgUrl: ['','','']
+ });
 spaghettisquash.save();
 		
 var sunchoke = new Veg ({
@@ -97,7 +97,7 @@ var sunchoke = new Veg ({
  	searchName: 'sunchoke',
  	rId: ['47982','e0cbc4','31236'],
  	mainImgUrl: 'http://i.imgur.com/ryWQm9Nh.jpg',
- 	vegPageImgUrl: ['http://i.imgur.com/kc7cO4d.jpg','http://i.imgur.com/MJAhrSd.jpg','http://i.imgur.com/xXs9EI5.jpg']
-});
+ 	vegPageImgUrl: ['','','']
+ });
 sunchoke.save();
 

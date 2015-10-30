@@ -159,6 +159,39 @@ app.get('/artichoke/recipe1', function(req, res) {
     //console.log(recipe);
 });
 
+/* Pull the ingredients, photo and source url for the recipe pages */
+app.get('/artichoke/recipe2', function(req, res) {
+    var recipeId = "47623";
+    //var query = "artichoke";
+    //var query = $(this).("title");
+    request('http://food2fork.com/api/get?key='+FOOD_API_KEY+'&rId='+recipeId, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+    // This API sends the data as a string so we need to parse it. This is not typical.
+    recipe = JSON.parse(body).recipe;
+    res.render('recipe1.ejs',{recipe:recipe});
+    //console.log({recipe:recipe});
+    }
+  });
+    //console.log(recipe);
+});
+
+/* Pull the ingredients, photo and source url for the recipe pages */
+app.get('/artichoke/recipe3', function(req, res) {
+    var recipeId = "1709";
+    //var query = "artichoke";
+    //var query = $(this).("title");
+    request('http://food2fork.com/api/get?key='+FOOD_API_KEY+'&rId='+recipeId, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+    // This API sends the data as a string so we need to parse it. This is not typical.
+    recipe = JSON.parse(body).recipe;
+    res.render('recipe1.ejs',{recipe:recipe});
+    //console.log({recipe:recipe});
+    }
+  });
+    //console.log(recipe);
+});
+
+
 
 /* VEGETABLE SEARCH API */
 app.post('/api/search', function(req, res) {

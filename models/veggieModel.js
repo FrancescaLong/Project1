@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 
 
-//require the module
+
 
 
 
@@ -21,7 +21,7 @@ var Veg = mongoose.model('Veg', vegSchema);
 
 module.exports = Veg;
 
-
+console.log(Veg);
 
 
 

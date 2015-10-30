@@ -21,13 +21,6 @@ var UserSchema = new Schema({
 });
 
 
- // FROM BRAUS
-/* 
-var UserSchema = new Schema({
-    email: String,
-    passwordDigest: String
- });
-*/
 
 
 
