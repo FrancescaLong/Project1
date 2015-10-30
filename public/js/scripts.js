@@ -54,7 +54,7 @@ your signup form to use method and action.
         data: $(this).serialize,
         success: function (data) {
         //alert(JSON.stringify(data));
-          window.location.assign("/profile");  /* this should redirect to the welcome 
+          window.location.assign('/profile');  /* this should redirect to the welcome 
           page since the redirect has stopped working */
           console.log(data);
         },
@@ -65,7 +65,7 @@ your signup form to use method and action.
     }).done(function(data) {
       console.log('got through the ajax just before the redirect');
       if (data.error) {
-          window.location.assign("/login");
+          window.location.assign('/login');
       }
     });  
   });
