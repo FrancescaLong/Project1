@@ -14,15 +14,30 @@ The API currently used in the app is Food2Fork.
 
 Libraries used include:
 	Bootsnipp.com
+	jQuery
+	Express
+	EJS
+	Path
+	Body-parser
+	Mongoose
+	Express-session
+	Bcrypt
+	Ajax
+
 
 Problems
-	1. 
+	1. Login still doen't take you back to the home page, it just sits there.
+	2. Only artichoke is currently populated with recipes and pictures. The others will be added.
 
 Future Development
 	1. Include the Wikipedia API to provide more information about the vegetable.
 	2. If the Wikipedia API will not work, write up the text for those pages.
 	3. Implement comments in the recipe section that will allow users to comment.
 	4. Allow users to identify their favorite vegetables.
-	5. .  
+	5. Simplify the code and create templates rather than the multitude of pages.  
+	6. Fix the login button so it shows up on the same line with the box.
+	7. Get the rest of the veggie pages going (along with the recipes).
+	8. Fix the picture size on the the recipes 1-3 pages.
+	9. Create a summary in the JS files and explain what each one does.
 
 
