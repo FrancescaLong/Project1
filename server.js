@@ -86,39 +86,39 @@ app.get('/artichoke', function(req, res) {
 });
 
 app.get('/asparagus', function(req, res) {
-    res.render('asparagus.ejs',{foods:foods});
+    res.render('asparagus.ejs');
 });
 
 app.get('/eggplant', function(req, res) {
-    res.render('eggplant.ejs',{foods:foods});
+    res.render('eggplant.ejs');
 });
 
-app.get('/kailan', function(req, res) {
-    res.render('kailan.ejs',{foods:foods});
+app.get('/kai-lan', function(req, res) {
+    res.render('kai-lan.ejs');
 });
 
 app.get('/kohlrabi', function(req, res) {
-    res.render('kohlrabi.ejs',{foods:foods});
+    res.render('kohlrabi.ejs');
 });
 
 app.get('/okra', function(req, res) {
-    res.render('okra.ejs',{foods:foods});
+    res.render('okra.ejs');
 });
 
 app.get('/romanesco', function(req, res) {
-    res.render('romanesco.ejs',{foods:foods});
+    res.render('romanesco.ejs');
 });
 
 app.get('/rutabaga', function(req, res) {
-    res.render('rutabaga.ejs',{foods:foods});
+    res.render('rutabaga.ejs');
 });
 
 app.get('/spaghettisquash', function(req, res) {
-    res.render('spaghettisquash.ejs',{foods:foods});
+    res.render('spaghettisquash.ejs');
 });
 
 app.get('/sunchoke', function(req, res) {
-    res.render('sunchoke.ejs',{foods:foods});
+    res.render('sunchoke.ejs');
 });
 
 
