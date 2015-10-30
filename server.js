@@ -8,6 +8,7 @@ var express = require("express"),  //npm install express --save
     mongoose = require('mongoose'),
     session = require('express-session');
 
+//require('./models/seeds.js'); //keep this in the file only 1 time or the data will be duplicated in the database
 
 //original connection
 //mongoose.connect('mongodb://localhost/simple-login');
@@ -216,6 +217,7 @@ app.get('/user-show', function (req, res){
     });
 });
 
+
 app.get('/logout', function (req, res) {
   // remove the session user id
   req.session.userId = null;
@@ -230,20 +232,23 @@ app.get('/logout', function (req, res) {
 app.post('/users', function (req, res) {
   console.log(req.body);
   User.createSecure(req.body.userName, req.body.email, req.body.password, function (err, newUser) {
+    console.log('newUser', newUser);
     req.session.userId = newUser._id;
-    res.redirect('/profile');
+    //res.redirect('/profile');
+    res.send('logged in');
   console.log("it worked!");
   });
 });
 
 
 // authenticate the user and set the session
-app.post('/sessions', function (req, res) {
+app.post('/login', function (req, res) {
   // call authenticate function to check if password user entered is correct
   User.authenticate(req.body.email, req.body.password, function (err, loggedInUser) {
     if (err){
       console.log('authentication error: ', err);
-      res.status(500).send();
+      res.send({error: 'There was a problem with your email or password. Please try to login again.'});
+      //redirect('/login');
     } else {
       console.log('setting session user id ', loggedInUser._id);
       req.session.userId = loggedInUser._id;

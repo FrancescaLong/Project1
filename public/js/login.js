@@ -6,7 +6,7 @@ console.log('sanity check: client-side js LOGIN.JS loaded');
 
 
 /*  Signin and Signup information FROM BRIANNA*/
-
+/*
   $('#signup-form').on('submit', function(event) {
     event.preventDefault();
     // select the form and serialize its data
@@ -17,7 +17,7 @@ console.log('sanity check: client-side js LOGIN.JS loaded');
       console.log(response);
     });
   });
-
+*/
 
 
 
@@ -30,8 +30,13 @@ console.log('sanity check: client-side js LOGIN.JS loaded');
     // send POST request to /login with the form data
     $.post('/login', loginData, function(response) {
       console.log(response);
+      if(response.error) {
+        alert(response.error);
+      } else {}
+
+      });
     });
-  });
+
 
 
 
