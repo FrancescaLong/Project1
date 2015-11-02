@@ -10,7 +10,7 @@ var express = require("express"),  //npm install express --save
     mongoose = require('mongoose'),
     session = require('express-session');
 
-require('./models/seeds.js'); //keep this in the file only 1 time or the data will be duplicated in the database
+//require('./models/seeds.js'); //keep this in the file only 1 time or the data will be duplicated in the database
 //console.log({veg:veg});
 
 //original connection
