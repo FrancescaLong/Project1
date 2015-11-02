@@ -3,7 +3,7 @@
 // require dependencies
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
-    bcrypt = require('bcrypt'),
+    bcrypt = require('bcrypt'), //might need bcryptjs
     salt = bcrypt.genSaltSync(10);
 
 

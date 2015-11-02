@@ -11,7 +11,7 @@ var express = require("express"),  //npm install express --save
     session = require('express-session');
 
 //require('./models/seeds.js'); //keep this in the file only 1 time or the data will be duplicated in the database
-//console.log({veg:veg});
+//console.log({veg:veg}); -- this was preventing the page from loading so we killed it
 
 //original connection
 //mongoose.connect('mongodb://localhost/simple-login');
