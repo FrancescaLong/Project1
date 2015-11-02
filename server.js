@@ -1,4 +1,6 @@
 // Server. js
+console.log("sanity check - server.js loaded");
+
 // REQUIREMENTS //
 var express = require("express"),  //npm install express --save
     app = express(),  //npm install ejs --save
@@ -8,14 +10,17 @@ var express = require("express"),  //npm install express --save
     mongoose = require('mongoose'),
     session = require('express-session');
 
-//require('./models/seeds.js'); //keep this in the file only 1 time or the data will be duplicated in the database
+require('./models/seeds.js'); //keep this in the file only 1 time or the data will be duplicated in the database
+//console.log({veg:veg});
 
 //original connection
 //mongoose.connect('mongodb://localhost/simple-login');
 
 //Heroku suggestion on how to connect
-mongoURI = 'mongodb://localhost/veggie';
-mongoose.connect(process.env.MONGOLAB_URI || mongoURI);
+//mongoURI = 'mongodb://localhost/veggie';
+mongoose.connect(process.env.MONGOLAB_URI ||
+   process.env.MONGOHQ_URL ||
+   'mongodb://localhost/veggie');
 
 var User = require('./models/userModel.js');
 

@@ -6,6 +6,7 @@
 
     <!-- bootstrap css -->
     <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -22,7 +23,7 @@
           <h2>Welcome!
             <% if (user && user.email) { %>
               You're logged in as <%= user.email %>!</h2>
-             <a href="/" class="btn btn-default">Investigate yummy veggies!</a> 
+             <a href="/" class="btn btn-default loginbtn">Investigate yummy veggies!</a> 
              <br><br>
              <a href="/logout" class="btn btn-default">Log Out</a>
             <% } else { %>

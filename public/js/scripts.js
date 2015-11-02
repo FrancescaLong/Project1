@@ -3,7 +3,7 @@ $(document).ready(function() {
 console.log('sanity check: client-side scripts.js is loaded');
 
 
-/*  Signin and Signup information  - MOVED TO LOGIN.JS*/
+
 
   // select the form and serialize its data
  $('#signup-form').on('submit', function(event) {
@@ -54,9 +54,9 @@ your signup form to use method and action.
         data: $(this).serialize,
         success: function (data) {
         //alert(JSON.stringify(data));
+          console.log(data);
           window.location.assign('/profile');  /* this should redirect to the welcome 
           page since the redirect has stopped working */
-          console.log(data);
         },
         error: function(){
           alert("Cannot get login data");

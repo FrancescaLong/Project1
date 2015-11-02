@@ -16,8 +16,8 @@ var UserSchema = new Schema({
            /* this will prevent the email from being returned 
            every time - MAY BREAK THINGS - will need to send the regular email 
            address in the validataion because the hash is not returned */
-    passwordDigest: String  // hashed and salted version  
-    //veg_Id: [type: String]  //maybe include the veg_Id here as well for likes?
+    passwordDigest: String,  // hashed and salted version  
+    veg_Id: {type: String}, //maybe include the veg_Id here as well for likes?
 });
 
 

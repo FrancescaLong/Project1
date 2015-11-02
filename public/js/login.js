@@ -19,7 +19,7 @@ console.log('sanity check: client-side js LOGIN.JS loaded');
   });
 */
 
-
+/* This is now an AJAX call in the scripts.js file
 
   $('#login-form').on('submit', function(e) {
     e.preventDefault();
@@ -36,7 +36,7 @@ console.log('sanity check: client-side js LOGIN.JS loaded');
 
       });
     });
-
+*/
 
 
 
