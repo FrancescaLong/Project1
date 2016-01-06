@@ -23,5 +23,10 @@ module.exports = Veg;
 
 console.log(Veg);
 
+/* In the database, 
+	the database is: veggie
+	the collection name is: vegs
 
+
+*/
 

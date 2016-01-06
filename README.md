@@ -40,4 +40,7 @@ Future Development
 	8. Fix the picture size on the the recipes 1-3 pages.
 	9. Create a summary in the JS files and explain what each one does.
 
-
+To Run the App
+	1. Run the "mongod" command in the terminal window to start the database
+	2. Run the "nodemon" command next in the terminal window to start the server
+	3. Navigate to http://localhost:5000/ in your browser

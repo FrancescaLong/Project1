@@ -55,7 +55,8 @@ your signup form to use method and action.
         success: function (data) {
         //alert(JSON.stringify(data));
           console.log(data);
-          window.location.assign('/profile');  /* this should redirect to the welcome 
+          window.location.assign('/profile');  
+          /* this should redirect to the welcome 
           page since the redirect has stopped working */
         },
         error: function(){

@@ -10,7 +10,9 @@ var express = require("express"),  //npm install express --save
     mongoose = require('mongoose'),
     session = require('express-session');
 
-//require('./models/seeds.js'); //keep this in the file only 1 time or the data will be duplicated in the database
+//keep this in the file only 1 time or the data will be duplicated in the database
+//require('./models/seeds.js'); 
+
 //console.log({veg:veg}); -- this was preventing the page from loading so we killed it
 
 //original connection
@@ -86,9 +88,16 @@ app.get('/', function(req, res) {
 });
 
 
+app.get('/veggie-show', function(req, res) {
+    res.render('veggie-show.ejs');
+});
+
+/*
 app.get('/artichoke', function(req, res) {
     res.render('artichoke.ejs');
 });
+*/
+
 
 app.get('/asparagus', function(req, res) {
     res.render('asparagus.ejs');
