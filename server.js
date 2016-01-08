@@ -8,7 +8,20 @@ var express = require("express"),  //npm install express --save
     bodyParser = require("body-parser"),  //npm install body-parser --save
     wikipedia = require("wikipedia-js"),
     mongoose = require('mongoose'),
-    session = require('express-session');
+    session = require('express-session'),
+    ejs = require('ejs');
+
+
+
+
+
+
+
+//var path = require("path"),  //npm install path --save
+// require dependencies
+
+//require the module
+require('dotenv').load(); //npm install dotenv --save
 
 //keep this in the file only 1 time or the data will be duplicated in the database
 //require('./models/seeds.js'); 
@@ -24,7 +37,11 @@ mongoose.connect(process.env.MONGOLAB_URI ||
    process.env.MONGOHQ_URL ||
    'mongodb://localhost/veggie');
 
+
+
+
 var User = require('./models/userModel.js');
+var Veggie = require('./models/veggieModel.js');
 
 // CONFIG //
 // set ejs as view engine
@@ -88,15 +105,22 @@ app.get('/', function(req, res) {
 });
 
 
-app.get('/veggie-show', function(req, res) {
-    res.render('veggie-show.ejs');
+app.get('/vegetables/:veg_name', function(req, res) {
+      console.log(req.params.veg_name);
+      Veggie.findOne({ name: req.params.veg_name })
+        //.populate('veggie')
+        .exec(function(err, veggie) {
+          if(err){return console.log(err);}
+        console.log(veggie);
+        res.render('veggie-show', { veggie:veggie } );
+  });
 });
 
 /*
 app.get('/artichoke', function(req, res) {
     res.render('artichoke.ejs');
 });
-*/
+
 
 
 app.get('/asparagus', function(req, res) {
@@ -135,7 +159,7 @@ app.get('/sunchoke', function(req, res) {
     res.render('sunchoke.ejs');
 });
 
-
+*/
 
 
 

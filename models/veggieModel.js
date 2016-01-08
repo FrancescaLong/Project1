@@ -1,13 +1,13 @@
 // REQUIREMENTS //
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
 
 
 
 
 
 
-
-var vegSchema = new mongoose.Schema({
+var vegSchema = new Schema({
   name: String,
   altName: String,
   searchName: String,

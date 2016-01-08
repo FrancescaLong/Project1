@@ -7,7 +7,7 @@ var User = require('./userModel.js');
 var artichoke = new Veg ({
  	name: 'artichoke',
  	altName: null,
- 	searchName: 'artichoke',
+ 	searchName: 'Artichoke',
  	rId: ['72b297','47623','1709'],
  	mainImgUrl: 'http://i.imgur.com/ScPBYbG.jpg',
  	vegPageImgUrl: ['http://i.imgur.com/kc7cO4d.jpg','http://i.imgur.com/MJAhrSd.jpg','http://i.imgur.com/xXs9EI5.jpg']
@@ -15,7 +15,7 @@ var artichoke = new Veg ({
 artichoke.save();
 		
 var asparagus = new Veg ({
- 	name: 'asparagus',
+ 	name: 'Asparagus',
  	altName: null,
  	searchName: 'asparagus',
  	rId: ['5cc4a8','35731','35729'],
@@ -27,7 +27,7 @@ asparagus.save();
 
 
 var eggplant = new Veg ({
- 	name: 'eggplant',
+ 	name: 'Eggplant',
  	altName: null,
  	searchName: 'eggplant',
  	rId: ['36284','36277','38eaa8'],
@@ -39,7 +39,7 @@ eggplant.save();
 
 
 var kailan = new Veg ({
- 	name: 'kai-lan',
+ 	name: 'Kai-lan',
  	altName: 'chinese broccoli',
  	searchName: 'kailan',
  	rId: ['48195','7770','e3d914'],
@@ -50,7 +50,7 @@ kailan.save();
 				
 
 var kohlrabi = new Veg ({
- 	name: 'kohlrabi',
+ 	name: 'Kohlrabi',
  	altName: null,
  	searchName: 'kohlrabi',
  	rId: ['26936','0d5c38','10386'],
@@ -61,7 +61,7 @@ kohlrabi.save();
 				
 
 var okra = new Veg ({
- 	name: 'okra',
+ 	name: 'Okra',
  	altName: null,
  	searchName: 'okra',
  	rId: ['36731','14753','26946'],
@@ -72,7 +72,7 @@ okra.save();
 			
 
 var romanesco = new Veg ({
- 	name: 'romanesco',
+ 	name: 'Romanesco',
  	altName: 'romanesco cauliflower',
  	searchName: 'romanesco',
  	rId: ['9a85c3','45428'],
@@ -83,7 +83,7 @@ romanesco.save();
 			
 
 var rutabaga = new Veg ({
- 	name: 'rutabaga',
+ 	name: 'Rutabaga',
  	altName: null,
  	searchName: 'rutabaga',
  	rId: ['36574','27328','9683'],
@@ -94,7 +94,7 @@ rutabaga.save();
 			
 
 var spaghettisquash = new Veg ({
- 	name: 'spaghetti squash',
+ 	name: 'Spaghetti-Squash',
  	altName: null,
  	searchName: 'spaghettisquash',
  	rId: ['29769','54325','48239'],
@@ -105,7 +105,7 @@ spaghettisquash.save();
 			
 
 var sunchoke = new Veg ({
- 	name: 'sunchoke',
+ 	name: 'Sunchoke',
  	altName: 'jerusalem artichoke',
  	searchName: 'sunchoke',
  	rId: ['47982','e0cbc4','31236'],
