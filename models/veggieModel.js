@@ -13,7 +13,10 @@ var vegSchema = new Schema({
   searchName: String,
   rId: [String],
   mainImgUrl: String,
-  vegPageImgUrl: [String]
+  mainText: String,
+  mainImgThumbnailUrl: String,
+  vegPageImgUrl: [String],
+  vegPageCaption: [String]
 });
 
 
