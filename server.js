@@ -80,7 +80,7 @@ var request = require('request');
 var foods;
 var recipe;
 var info;
-
+var recipeIdarray;
 
 
 /*
@@ -108,58 +108,15 @@ app.get('/', function(req, res) {
 app.get('/vegetables/:veg_name', function(req, res) {
       console.log(req.params.veg_name);
       Veggie.findOne({ name: req.params.veg_name })
-        //.populate('veggie')
         .exec(function(err, veggie) {
           if(err){return console.log(err);}
         console.log(veggie);
         res.render('veggie-show', { veggie:veggie } );
+        var recipeIdarray = veggie.rId;
+        console.log(recipeIdarray);
   });
 });
 
-/*
-app.get('/artichoke', function(req, res) {
-    res.render('artichoke.ejs');
-});
-
-
-
-app.get('/asparagus', function(req, res) {
-    res.render('asparagus.ejs');
-});
-
-app.get('/eggplant', function(req, res) {
-    res.render('eggplant.ejs');
-});
-
-app.get('/kai-lan', function(req, res) {
-    res.render('kai-lan.ejs');
-});
-
-app.get('/kohlrabi', function(req, res) {
-    res.render('kohlrabi.ejs');
-});
-
-app.get('/okra', function(req, res) {
-    res.render('okra.ejs');
-});
-
-app.get('/romanesco', function(req, res) {
-    res.render('romanesco.ejs');
-});
-
-app.get('/rutabaga', function(req, res) {
-    res.render('rutabaga.ejs');
-});
-
-app.get('/spaghettisquash', function(req, res) {
-    res.render('spaghettisquash.ejs');
-});
-
-app.get('/sunchoke', function(req, res) {
-    res.render('sunchoke.ejs');
-});
-
-*/
 
 
 
@@ -169,7 +126,6 @@ app.get('/sunchoke', function(req, res) {
 app.get('/artichoke/moreRecipes', function(req, res) {
     var query = "artichoke";
     console.log("the 10 veggie is "+query);
-    //var query = $(this).("title");
     request('http://food2fork.com/api/search?key='+FOOD_API_KEY+'&q='+query, function (error, response, body) {
     if (!error && response.statusCode == 200) {
     // This API sends the data as a string so we need to parse it. This is not typical.
@@ -181,21 +137,54 @@ app.get('/artichoke/moreRecipes', function(req, res) {
 });
 
 
-/* Pull the ingredients, photo and source url for the recipe pages */
-app.get('/artichoke/recipe1', function(req, res) {
-    var recipeId = "72b297";
-    //var query = "artichoke";
-    //var query = $(this).("title");
-    request('http://food2fork.com/api/get?key='+FOOD_API_KEY+'&rId='+recipeId, function (error, response, body) {
+/*
+app.get('/artichoke/moreRecipes', function(req, res) {
+    var query = "artichoke";
+    console.log("the 10 veggie is "+query);
+    request('http://food2fork.com/api/search?key='+FOOD_API_KEY+'&q='+query, function (error, response, body) {
     if (!error && response.statusCode == 200) {
     // This API sends the data as a string so we need to parse it. This is not typical.
-    recipe = JSON.parse(body).recipe;
-    res.render('recipe1.ejs',{recipe:recipe});
-    //console.log({recipe:recipe});
+    foods = JSON.parse(body).recipes;
+    res.render('moreRecipes.ejs',{foods:foods});
     }
   });
-    //console.log(recipe);
+    //console.log(foods);
 });
+*/
+
+/*app.get('/vegetables/:veg_name', function(req, res) {
+      console.log(req.params.veg_name);
+      Veggie.findOne({ name: req.params.veg_name })
+        .exec(function(err, veggie) {
+          if(err){return console.log(err);}
+        console.log(veggie);
+        res.render('veggie-show', { veggie:veggie } );
+  });
+});*/
+
+
+/* Pull the ingredients, photo and source url for the recipe pages */
+app.get('/vegetables/:veg_name/:recipe', function(req, res) {
+    console.log(recipeIdarray);  // prints as undefined
+    Veggie.findOne({ name: req.params.veg_name })
+      .exec(function(err, veggie) {
+        if(err){return console.log(err);}
+        console.log(veggie); 
+      var recipeId = veggie.rId[0]; //Braised Chicken with Olives and Artichokes
+        console.log(recipeId);  // prints as undefined
+        request('http://food2fork.com/api/get?key='+FOOD_API_KEY+'&rId='+recipeId, function (error, response, body) {
+          if (!error && response.statusCode == 200) {
+          // This API sends the data as a string so we need to parse it. 
+          // This is not typical.
+          recipe = JSON.parse(body).recipe;
+    res.render('recipe.ejs', { recipe:recipe }); 
+    //if commenting out the ajax call above, keep this line to see the webpage
+      }  //if commenting out the ajax call above, comment out this line
+    }); //if commenting out the ajax call above, comment out this line
+  });
+});
+
+
 
 /* Pull the ingredients, photo and source url for the recipe pages */
 app.get('/artichoke/recipe2', function(req, res) {
