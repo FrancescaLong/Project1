@@ -50,7 +50,7 @@ eggplant.save();
 var kailan = new Veg ({
  	name: 'Kai-lan',
  	altName: 'chinese broccoli',
- 	searchName: 'kailan',
+ 	searchName: 'chinese broccoli',
  	rId: ['48195','7770','e3d914'],
  	mainImgUrl: 'http://i.imgur.com/rdiJZbWh.jpg',
  	mainText: 'Kai-lan is also known as Chinese broccoli. To prepare it, trim the stalks and then blanche it making sure it is completely submerged in the water for about 2 minutes. When you remove it, you can serve it as is or saute it with garlic for a few minutes. Serve it with oyster sauce, butter, or any other topping you like.',
@@ -120,7 +120,7 @@ rutabaga.save();
 var spaghettisquash = new Veg ({
  	name: 'Spaghetti-Squash',
  	altName: null,
- 	searchName: 'spaghettisquash',
+ 	searchName: 'spaghetti squash',
  	rId: ['29769','54325','48239'],
  	mainImgUrl: 'http://i.imgur.com/zLn7Vk3h.jpg',
  	mainText: 'Slice the squash in half (from the stem to the end) and scrape the seeds out of the middle. Cover the cut sides with olive oil and bake at 400 degrees for 40 to 50 minutes. When tender, scrape the squash out of the shell and serve with any sort of topping you like, including spaghetti sauce!',
