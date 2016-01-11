@@ -1,14 +1,15 @@
 {
-  "name": "Project1",
+  "name": "project1",
   "version": "1.0.0",
   "description": "Project 1 - What is that vegetable",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/FrancescaLong/Project1.git"
+    "url": "git+https://github.com/FrancescaLong/Project1.git"
   },
   "author": "",
   "license": "ISC",
@@ -18,14 +19,15 @@
   "homepage": "https://github.com/FrancescaLong/Project1.git",
   "dependencies": {
     "bcrypt": "^0.8.5",
-    "body-parser": "^1.14.1",
+    "body-parser": "^1.14.2",
     "dotenv": "^1.2.0",
     "ejs": "^2.3.4",
-    "express": "^4.12.3",
+    "express": "^4.13.3",
     "express-cdn": "^0.2.5",
     "express-session": "^1.12.0",
     "mongoose": "^4.2.3",
     "path": "^0.12.7",
     "request": "^2.65.0"
-  }
+  },
+  "devDependencies": {}
 }

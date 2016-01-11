@@ -44,9 +44,19 @@ function veggieSearch(){
   //console.log($('#veggieSearch'));
 }
 
-veggieSearch.prototype.addEventListeners = function(){   //VeggieSearch.prototype.addEventListeners
+veggieSearch.prototype.addEventListeners = function(){   
+  //VeggieSearch.prototype.addEventListeners
 };
 
+
+
+/* IDENTIFY VEGGIE FROM THE SLIDE OR DROPDOWN BOX */
+function existingVeggie(){
+  this.$veggieLink = $('#veggieName');
+  console.log($('#veggieName'));
+  this.$existingVeggie = $('#existingVeggie');
+  console.log($('#existingVeggie'));
+}
 
 /*
 

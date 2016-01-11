@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vegetable - Recipe</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Bootstrap JS -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <!-- API Key -->
+  <link rel="stylesheet" type="text/css" href="/static/css/vegetable.css">
+  <script src="/static/js/app.js"></script>
+</head>
+<body>
+
+  <!-- Home button -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">Home</a>
+    <a class="navbar-brand" href="./">Back to your veggie</a>
+  </div>
+
+  <div class="div">
+    <h3 class="recipeTitle"><%=recipe.title%></h3>
+  </div>
+  <br>
+
+  <div>
+    <div class="thumbnail">
+      <img src=<%=recipe.image_url%>>
+        <div class="caption">
+        </div>
+    </div>
+  </div>
+  <div class="div">
+    <h6 class="recipeTitle">Ingredients</h6>
+      <ul>
+        <% for(var i=0; i<recipe.ingredients.length; i++) { %>    
+        <li> <%=recipe.ingredients[i]%> </li>
+  <% } %>
+      </ul>
+  </div>
+  <br>
+
+  <div>
+    <h6 class="recipeTitle">Instructions
+        <a href="<%=recipe.source_url%>" target="_blank">
+        <br><small> Follow the instructions on the author's site</h6></a>
+      </ul>
+  </div>
+
+  <div>
+    <a href="http://Food2Fork.com" target="_blank">
+    <footer>Powered by Food2Fork.com</footer></a>
+  </div>
+
+</body>
+</html>

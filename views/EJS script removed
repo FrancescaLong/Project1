@@ -1,0 +1,7 @@
+EJS script removed
+
+
+veggie-show.ejs - row 39 
+	- this should show the name of the vegetable at the top of the page
+	- the page won't load with this included though even if it is commented out
+	<!--    <h1 class="h1"><% $(this).("name") %></h1>  -->

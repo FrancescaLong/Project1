@@ -3,17 +3,6 @@ $(document).ready(function(){
 console.log('sanity check: client-side js LOGIN.JS loaded');
 
 
-//var path = require("path"),  //npm install path --save
-// require dependencies
-var mongoose = require('mongoose'),
-    Schema = mongoose.Schema,
-    express = require('express'),
-    app = express(),
-    ejs = require('ejs');
-
-//require the module
-require('dotenv').load(); //npm install dotenv --save
-
 
 
 
@@ -41,6 +30,9 @@ require('dotenv').load(); //npm install dotenv --save
             }
         }
     });
+
+
+
 
 });   // CLOSING TAGS
 

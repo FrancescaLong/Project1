@@ -8,9 +8,24 @@ var express = require("express"),  //npm install express --save
     bodyParser = require("body-parser"),  //npm install body-parser --save
     wikipedia = require("wikipedia-js"),
     mongoose = require('mongoose'),
-    session = require('express-session');
+    session = require('express-session'),
+    ejs = require('ejs');
 
-//require('./models/seeds.js'); //keep this in the file only 1 time or the data will be duplicated in the database
+
+
+
+
+
+
+//var path = require("path"),  //npm install path --save
+// require dependencies
+
+//require the module
+require('dotenv').load(); //npm install dotenv --save
+
+//keep this in the file only 1 time or the data will be duplicated in the database
+//require('./models/seeds.js'); 
+
 //console.log({veg:veg}); -- this was preventing the page from loading so we killed it
 
 //original connection
@@ -22,7 +37,11 @@ mongoose.connect(process.env.MONGOLAB_URI ||
    process.env.MONGOHQ_URL ||
    'mongodb://localhost/veggie');
 
+
+
+
 var User = require('./models/userModel.js');
+var Veggie = require('./models/veggieModel.js');
 
 // CONFIG //
 // set ejs as view engine
@@ -61,7 +80,7 @@ var request = require('request');
 var foods;
 var recipe;
 var info;
-
+var recipeIdarray;
 
 
 /*
@@ -86,46 +105,17 @@ app.get('/', function(req, res) {
 });
 
 
-app.get('/artichoke', function(req, res) {
-    res.render('artichoke.ejs');
+app.get('/vegetables/:veg_name', function(req, res) {
+      //console.log(req.params.veg_name);  // prints out the name of the veggie
+      Veggie.findOne({ name: req.params.veg_name })
+        .exec(function(err, veggie) {
+          if(err){return console.log(err);}
+        //console.log(veggie); // prints out the veggie items from the database!
+        res.render('veggie-show', { veggie:veggie } );
+        var recipeIdarray = veggie.rId;
+        //console.log(recipeIdarray); // prints out the recipe array from the database
+  });
 });
-
-app.get('/asparagus', function(req, res) {
-    res.render('asparagus.ejs');
-});
-
-app.get('/eggplant', function(req, res) {
-    res.render('eggplant.ejs');
-});
-
-app.get('/kai-lan', function(req, res) {
-    res.render('kai-lan.ejs');
-});
-
-app.get('/kohlrabi', function(req, res) {
-    res.render('kohlrabi.ejs');
-});
-
-app.get('/okra', function(req, res) {
-    res.render('okra.ejs');
-});
-
-app.get('/romanesco', function(req, res) {
-    res.render('romanesco.ejs');
-});
-
-app.get('/rutabaga', function(req, res) {
-    res.render('rutabaga.ejs');
-});
-
-app.get('/spaghettisquash', function(req, res) {
-    res.render('spaghettisquash.ejs');
-});
-
-app.get('/sunchoke', function(req, res) {
-    res.render('sunchoke.ejs');
-});
-
 
 
 
@@ -133,68 +123,49 @@ app.get('/sunchoke', function(req, res) {
 /*  API CALLS FOR THE RECIPE PARTS */
 
 /* Pull the pictures and links for the moreRecipes page*/
-app.get('/artichoke/moreRecipes', function(req, res) {
-    var query = "artichoke";
-    console.log("the 10 veggie is "+query);
-    //var query = $(this).("title");
+app.get('/vegetables/:veg_name/moreRecipes', function(req, res) {
+    Veggie.findOne({ name: req.params.veg_name })
+      .exec(function(err, veggie) {
+        if(err){return console.log(err);}
+    //var query = req.params.veg_name;
+    var query = veggie.searchName;
+    console.log(query);
     request('http://food2fork.com/api/search?key='+FOOD_API_KEY+'&q='+query, function (error, response, body) {
     if (!error && response.statusCode == 200) {
     // This API sends the data as a string so we need to parse it. This is not typical.
     foods = JSON.parse(body).recipes;
     res.render('moreRecipes.ejs',{foods:foods});
-    }
+      }
+    });
   });
-    //console.log(foods);
 });
 
 
-/* Pull the ingredients, photo and source url for the recipe pages */
-app.get('/artichoke/recipe1', function(req, res) {
-    var recipeId = "72b297";
-    //var query = "artichoke";
-    //var query = $(this).("title");
-    request('http://food2fork.com/api/get?key='+FOOD_API_KEY+'&rId='+recipeId, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-    // This API sends the data as a string so we need to parse it. This is not typical.
-    recipe = JSON.parse(body).recipe;
-    res.render('recipe1.ejs',{recipe:recipe});
-    //console.log({recipe:recipe});
-    }
+
+
+
+/* Pull the ingredients, photo and source url for the 3 specified recipe pages */
+app.get('/vegetables/:veg_name/:recipe', function(req, res) {
+    console.log(req.params.recipe);  // prints as undefined
+    Veggie.findOne({ name: req.params.veg_name })
+      .exec(function(err, veggie) {
+        if(err){return console.log(err);}
+        //console.log(veggie); prints out the veggie items from database!
+        var recipeId = req.params.recipe;
+        console.log(recipeId);  // prints as undefined
+        request('http://food2fork.com/api/get?key='+FOOD_API_KEY+'&rId='+recipeId, function (error, response, body) {
+          if (!error && response.statusCode == 200) {
+          // This API sends the data as a string so we need to parse it. 
+          // This is not typical.
+          recipe = JSON.parse(body).recipe;
+    res.render('recipe.ejs', { recipe:recipe }); 
+      }
+    });
   });
-    //console.log(recipe);
 });
 
-/* Pull the ingredients, photo and source url for the recipe pages */
-app.get('/artichoke/recipe2', function(req, res) {
-    var recipeId = "47623";
-    //var query = "artichoke";
-    //var query = $(this).("title");
-    request('http://food2fork.com/api/get?key='+FOOD_API_KEY+'&rId='+recipeId, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-    // This API sends the data as a string so we need to parse it. This is not typical.
-    recipe = JSON.parse(body).recipe;
-    res.render('recipe1.ejs',{recipe:recipe});
-    //console.log({recipe:recipe});
-    }
-  });
-    //console.log(recipe);
-});
 
-/* Pull the ingredients, photo and source url for the recipe pages */
-app.get('/artichoke/recipe3', function(req, res) {
-    var recipeId = "1709";
-    //var query = "artichoke";
-    //var query = $(this).("title");
-    request('http://food2fork.com/api/get?key='+FOOD_API_KEY+'&rId='+recipeId, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-    // This API sends the data as a string so we need to parse it. This is not typical.
-    recipe = JSON.parse(body).recipe;
-    res.render('recipe1.ejs',{recipe:recipe});
-    //console.log({recipe:recipe});
-    }
-  });
-    //console.log(recipe);
-});
+
 
 
 
