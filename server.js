@@ -170,7 +170,6 @@ app.get('/vegetables/:veg_name/:recipe', function(req, res) {
       .exec(function(err, veggie) {
         if(err){return console.log(err);}
         //console.log(veggie); prints out the veggie items from database!
-//      var recipeId = veggie.rId[0]; //Braised Chicken with Olives and Artichokes
         var recipeId = req.params.recipe;
         console.log(recipeId);  // prints as undefined
         request('http://food2fork.com/api/get?key='+FOOD_API_KEY+'&rId='+recipeId, function (error, response, body) {
