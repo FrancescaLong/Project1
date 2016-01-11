@@ -106,14 +106,14 @@ app.get('/', function(req, res) {
 
 
 app.get('/vegetables/:veg_name', function(req, res) {
-      console.log(req.params.veg_name);
+      //console.log(req.params.veg_name);  // prints out the name of the veggie
       Veggie.findOne({ name: req.params.veg_name })
         .exec(function(err, veggie) {
           if(err){return console.log(err);}
-        console.log(veggie);
+        //console.log(veggie); // prints out the veggie items from the database!
         res.render('veggie-show', { veggie:veggie } );
         var recipeIdarray = veggie.rId;
-        console.log(recipeIdarray);
+        //console.log(recipeIdarray); // prints out the recipe array from the database
   });
 });
 
@@ -165,12 +165,13 @@ app.get('/artichoke/moreRecipes', function(req, res) {
 
 /* Pull the ingredients, photo and source url for the recipe pages */
 app.get('/vegetables/:veg_name/:recipe', function(req, res) {
-    console.log(recipeIdarray);  // prints as undefined
+    console.log(req.params.recipe);  // prints as undefined
     Veggie.findOne({ name: req.params.veg_name })
       .exec(function(err, veggie) {
         if(err){return console.log(err);}
-        console.log(veggie); 
-      var recipeId = veggie.rId[0]; //Braised Chicken with Olives and Artichokes
+        //console.log(veggie); prints out the veggie items from database!
+//      var recipeId = veggie.rId[0]; //Braised Chicken with Olives and Artichokes
+        var recipeId = req.params.recipe;
         console.log(recipeId);  // prints as undefined
         request('http://food2fork.com/api/get?key='+FOOD_API_KEY+'&rId='+recipeId, function (error, response, body) {
           if (!error && response.statusCode == 200) {
@@ -185,6 +186,25 @@ app.get('/vegetables/:veg_name/:recipe', function(req, res) {
 });
 
 
+app.get('/vegetables/:veg_name/:recipe', function(req, res) {
+    console.log(recipeIdarray);  // prints as undefined
+    Veggie.findOne({ name: req.params.veg_name })
+      .exec(function(err, veggie) {
+        if(err){return console.log(err);}
+        console.log(veggie); 
+      var recipeId = veggie.rId[1]; //Braised Chicken with Olives and Artichokes
+        console.log(recipeId);  // prints as undefined
+        request('http://food2fork.com/api/get?key='+FOOD_API_KEY+'&rId='+recipeId, function (error, response, body) {
+          if (!error && response.statusCode == 200) {
+          // This API sends the data as a string so we need to parse it. 
+          // This is not typical.
+          recipe = JSON.parse(body).recipe;
+    res.render('recipe.ejs', { recipe:recipe }); 
+    //if commenting out the ajax call above, keep this line to see the webpage
+      }  //if commenting out the ajax call above, comment out this line
+    }); //if commenting out the ajax call above, comment out this line
+  });
+});
 
 /* Pull the ingredients, photo and source url for the recipe pages */
 app.get('/artichoke/recipe2', function(req, res) {
