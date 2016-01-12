@@ -5,3 +5,26 @@ veggie-show.ejs - row 39
 	- this should show the name of the vegetable at the top of the page
 	- the page won't load with this included though even if it is commented out
 	<!--    <h1 class="h1"><% $(this).("name") %></h1>  -->
+
+
+
+
+Removed from Scripts.js file - example ajax call
+
+$.ajax({
+    url: "http://www.example.com/api",
+    beforeSend: function(xhr) { 
+      xhr.setRequestHeader("Authorization", "Basic " + btoa("username:password")); 
+    },
+    type: 'POST',
+    dataType: 'json',
+    contentType: 'application/json',
+    processData: false,
+    data: '{"foo":"bar"}',
+    success: function (data) {
+      alert(JSON.stringify(data));
+    },
+    error: function(){
+      alert("Cannot get data");
+    }
+});
