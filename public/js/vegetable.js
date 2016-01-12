@@ -40,7 +40,8 @@ console.log('sanity check: client-side js LOGIN.JS loaded');
 
 
 /*
-//Wikipedia search query for their API - moved the the server.js file since we want node to work with this
+//Wikipedia search query for their API - moved the the server.js file since we want 
+    node to work with this - we need to be able identify the veggie from the URL - 
     var options = {query: query, format: "html", summaryOnly: false}; //set to true for summary only
         wikipedia.searchArticle(options, function(err, htmlWikiText){
     if(err){

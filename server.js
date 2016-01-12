@@ -12,12 +12,6 @@ var express = require("express"),  //npm install express --save
     ejs = require('ejs');
 
 
-
-
-
-
-
-//var path = require("path"),  //npm install path --save
 // require dependencies
 
 //require the module
@@ -26,7 +20,6 @@ require('dotenv').load(); //npm install dotenv --save
 //keep this in the file only 1 time or the data will be duplicated in the database
 //require('./models/seeds.js'); 
 
-//console.log({veg:veg}); -- this was preventing the page from loading so we killed it
 
 //original connection
 //mongoose.connect('mongodb://localhost/simple-login');
@@ -36,8 +29,6 @@ require('dotenv').load(); //npm install dotenv --save
 mongoose.connect(process.env.MONGOLAB_URI ||
    process.env.MONGOHQ_URL ||
    'mongodb://localhost/veggie');
-
-
 
 
 var User = require('./models/userModel.js');
@@ -63,8 +54,6 @@ app.use(session({
 
 /* RECIPE INFO AND VEGGIE SEARCH  */
 
-//require the module
-require('dotenv').load(); //npm install dotenv --save
 
 var FOOD_API_KEY = process.env.FOOD_API_KEY;
 var INFO_API_KEY = process.env.INFO_API_KEY;
@@ -79,7 +68,7 @@ var request = require('request');
 //get API data
 var foods;
 var recipe;
-var info;
+var details;
 var recipeIdarray;
 
 
@@ -105,19 +94,188 @@ app.get('/', function(req, res) {
 });
 
 
+        //request('https://en.wikipedia.org/w/api.php?action=parse&format=json&page='+query+'&prop=text&callback=JSON_CALLBACK', function (error, response, body) {
+        //request("https://en.wikipedia.org/w/api.php?action=query&prop=extracts&exintro=true&titles="+ query +"&format=json&callback=JSON_CALLBACK&redirects&", function(error, response, body) {
+        //request("https://en.wikipedia.org/w/api.php?action=query&prop=extracts&exintro=true&titles="+ query +"&format=json&callback=JSON_CALLBACK", function(error, response, body) {
+        // text without HTML - in sandbox, go to query, revisions, limit to 1, enter in the search item in the title box - /w/api.php?action=query&prop=revisions&format=json&rvprop=content&rvlimit=1&titles=Artichoke
+        // page with HTML - in the sandbox, go to parse, enter search into the page box, select text in the prop box - /w/api.php?action=parse&format=json&page=artichoke&prop=text
+
+
+/* BASIC LOAD - HAS NO WIKIPEDIA STUFF INCLUDED */
+app.get('/vegetables/:veg_name', function(req, res) {
+      //console.log(req.params.veg_name);  // prints out the name of the veggie
+      Veggie.findOne({ name: req.params.veg_name })
+        .exec(function(err, veggie) {
+          if(err){return console.log(err);}
+        //console.log(veggie); // prints out the veggie items from the database
+        var query = veggie.searchName;
+        //console.log(query +" is the api search query");
+            res.render('veggie-show', { veggie:veggie } );
+          }); 
+});
+
+/* WORKING ON THE WRAPPER FOR THE WIKIPEDIA JSONP RESPONSE 
+app.get('/vegetables/:veg_name', function(req, res) {
+      //console.log(req.params.veg_name);  // prints out the name of the veggie
+      Veggie.findOne({ name: req.params.veg_name })
+        .exec(function(err, veggie) {
+          if(err){return console.log(err);}
+        //console.log(veggie); // prints out the veggie items from the database
+        var query = veggie.searchName;
+        //console.log(query +" is the api search query");
+
+        var request = require('request');
+        var getJsonFromJsonP = function (url, callback) {
+        request('https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&titles='+query+'&callback=JSONP_CALLBACK', function (error, response, body) {
+          if (!error && response.statusCode == 200) {
+            var jsonpData = body;
+            var json;
+            //if you don't know for sure that you are getting jsonp, then i'd do something like this
+            try
+            {
+               json = JSON.parse(jsonpData);
+            }
+            catch(e)
+            {
+                var startPos = jsonpData.indexOf('",extract: "');
+                var endPos = jsonpData.indexOf('"}');
+                var jsonString = jsonpData.substring(startPos+1, endPos+1);
+                json = JSON.parse(jsonString);
+            console.log(json + " is the wiki api call result");
+            res.render('veggie-show', { veggie:veggie, details:json } ); // changed to json from wiki
+
+            }
+            callback(null, json);
+          } else {
+            callback(error);
+          }
+        });
+        };
+
+        //request('https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&titles='+query+'&callback=JSONP_CALLBACK', function (error, response, body) {
+          //if (!error && response.statusCode == 200) {
+            //var wikiStart = JSON.parse(body).details; 
+            //var wiki = wikiStart.body.batchcomplete.query.pages[0];
+            //    console.log(json + " is the wiki api call result");
+            //    res.render('veggie-show', { veggie:veggie, details:json } ); // changed to json from wiki
+          }); // added the ); for the wrapper function
+}); //added this item in for the wrapper function
+//        }); commented this out for the wrapper function
+//  }); commented this out for the wrapper function
+//}); commented this out for the wrapper function
+
+*/
+
+
+
+
+/*  FOR REFRENCE ONLY - THIS CALL WORKS
+
+app.get('/vegetables/:veg_name/moreRecipes', function(req, res) {
+    Veggie.findOne({ name: req.params.veg_name })
+      .exec(function(err, veggie) {
+        if(err){return console.log(err);}
+    var query = veggie.searchName;
+    request('http://food2fork.com/api/search?key='+FOOD_API_KEY+'&q='+query, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+      // This API sends the data as a string so we need to parse it. This is not typical.
+      foods = JSON.parse(body).recipes;
+    res.render('moreRecipes.ejs',{foods:foods});
+      }
+    });
+  });
+});
+
+*/
+
+/*THIS SHOWS THE RESULTS IN THE CONSOLE BUT THE SERVER CRASHES AND HAS AN SyntaxError: Unexpected token / ON LINE 114
+app.get('/vegetables/:veg_name', function(req, res) {
+      //console.log(req.params.veg_name);  // prints out the name of the veggie
+      Veggie.findOne({ name: req.params.veg_name })
+        .exec(function(err, veggie) {
+          if(err){return console.log(err);}
+        //console.log(veggie); // prints out the veggie items from the database
+        var query = veggie.searchName;
+        //console.log(query +" is the api search query");
+        request('https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&titles='+query+'&callback=JSONP_CALLBACK', function (error, response, body) {
+          if (!error && response.statusCode == 200) {
+            var wikiStart = JSON.parse(body).details; 
+            var wiki = wikiStart.body.batchcomplete.query.pages[0];
+            console.log(wiki + " is the wiki api call result");
+            res.render('veggie-show', { veggie:veggie, details:wiki } );
+          } 
+        });
+  });
+});
+*/
+
+
+/* THIS SHOWS API RESULTS IN TERMINAL THEN UNEXPECTED TOKEN / AND SERVER CRASHES
+
 app.get('/vegetables/:veg_name', function(req, res) {
       //console.log(req.params.veg_name);  // prints out the name of the veggie
       Veggie.findOne({ name: req.params.veg_name })
         .exec(function(err, veggie) {
           if(err){return console.log(err);}
         //console.log(veggie); // prints out the veggie items from the database!
-        res.render('veggie-show', { veggie:veggie } );
-        var recipeIdarray = veggie.rId;
-        //console.log(recipeIdarray); // prints out the recipe array from the database
+        var query = veggie.searchName;
+        console.log(query +" is the api search query");
+        request('https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&titles='+query+'&callback=JSON_CALLBACK', function (error, response, body) {
+          if (!error && response.statusCode == 200) {
+            wiki = JSON.parse(body).details; 
+            console.log(wiki + " is the wiki api call result");
+            res.render('veggie-show', { veggie:veggie, details:wiki } );
+          } 
+        });
+  });
+});
+*/
+
+
+/* THIS SAYS CANNOT READ PROPERTY QUERY OF UNDEFINED - NO RESULTS IN TERMINAL
+
+app.get('/vegetables/:veg_name', function(req, res) {
+      //console.log(req.params.veg_name);  // prints out the name of the veggie
+      Veggie.findOne({ name: req.params.veg_name })
+        .exec(function(err, veggie) {
+          if(err){return console.log(err);}
+        //console.log(veggie); // prints out the veggie items from the database!
+        var query = veggie.searchName;
+        console.log(query +" is the api search query");
+        request('https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&titles='+query+'&callback=JSON_CALLBACK', function (error, response, body) {
+          if (!error && response.statusCode == 200) {
+            wiki = JSON.parse(body.body.query.pages).details; 
+            console.log(wiki + " is the wiki api call result");
+            res.render('veggie-show', { veggie:veggie, details:wiki } );
+          } 
+        });
+  });
+});
+*/
+
+
+
+/*  THIS SHOWS API RESULTS IN THE TERMINAL BUT UNEXPECTED TOKEN / ERROR AND NO DATA RECEIVED ON PAGE
+
+app.get('/vegetables/:veg_name', function(req, res) {
+      //console.log(req.params.veg_name);  // prints out the name of the veggie
+      Veggie.findOne({ name: req.params.veg_name })
+        .exec(function(err, veggie) {
+          if(err){return console.log(err);}
+        //console.log(veggie); // prints out the veggie items from the database!
+        var query = veggie.searchName;
+        console.log(query +" is the api search query");
+        request('https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&titles='+query+'&callback=JSON_CALLBACK', function (error, response, body) {
+          if (!error && response.statusCode == 200) {
+            wiki = JSON.parse(body).details; 
+            console.log(wiki + " is the wiki api call result");
+            res.render('veggie-show', { veggie:veggie, details:wiki } );
+          } 
+        });
   });
 });
 
-
+*/
 
 
 /*  API CALLS FOR THE RECIPE PARTS */
@@ -127,13 +285,11 @@ app.get('/vegetables/:veg_name/moreRecipes', function(req, res) {
     Veggie.findOne({ name: req.params.veg_name })
       .exec(function(err, veggie) {
         if(err){return console.log(err);}
-    //var query = req.params.veg_name;
     var query = veggie.searchName;
-    console.log(query);
     request('http://food2fork.com/api/search?key='+FOOD_API_KEY+'&q='+query, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-    // This API sends the data as a string so we need to parse it. This is not typical.
-    foods = JSON.parse(body).recipes;
+      if (!error && response.statusCode == 200) {
+      // This API sends the data as a string so we need to parse it. This is not typical.
+      foods = JSON.parse(body).recipes;
     res.render('moreRecipes.ejs',{foods:foods});
       }
     });
@@ -179,29 +335,10 @@ app.post('/api/search', function(req, res) {
     // This API sends the data as a string so we need to parse it. This is not typical.
     foods = JSON.parse(body).recipes;
     //console.log("foods",foods);
-
     res.render('moreRecipes.ejs',{foods:foods, queryveggie:query});
     }
   });
-    //console.log(foods);
-    //console.log(recipe);
 });
-
-
-/*app.get('/artichoke/moreRecipes', function(req, res) {
-    var query = "artichoke";
-    //var query = $(this).("title");
-    request('http://food2fork.com/api/search?key='+FOOD_API_KEY+'&q='+query, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-    // This API sends the data as a string so we need to parse it. This is not typical.
-    foods = JSON.parse(body).recipes;
-    res.render('moreRecipes.ejs',{foods:foods});
-    }
-  });
-    console.log(foods);
-});*/
-
-
 
 
 
