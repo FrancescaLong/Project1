@@ -21,7 +21,7 @@ var asparagus = new Veg ({
  	name: 'Asparagus',
  	altName: null,
  	searchName: 'asparagus',
- 	rId: ['5cc4a8','35731','35729'],
+ 	rId: ['5cc4a8','35731','35729'],	
  	mainImgUrl: 'http://i.imgur.com/iVbEqFth.jpg',
  	mainText: 'To prepare the asparagus, cut from the bottom of the stalk until the knife slides easily through. You may have to slice off much of the stalk if the asparagus is large or old. Steam the asparagus or place it upright in a pot with an inch or so of water until tender, about 5 to 8 minutes. It can also be roasted, grilled, baked, fried, or sauteed.',
  	mainImgThumbnailUrl: 'http://i.imgur.com/iVbEqFt.jpg',
