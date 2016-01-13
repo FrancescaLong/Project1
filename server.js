@@ -18,7 +18,7 @@ var request = require('request');
 require('dotenv').load(); //npm install dotenv --save
 
 //keep this in the file only 1 time or the data will be duplicated in the database
-//require('./models/seeds.js'); 
+require('./models/seeds.js'); 
 
 
 //original connection
@@ -90,7 +90,7 @@ app.get('/vegetables/:veg_name', function(req, res) {
         .exec(function(err, veggie) {
           if(err){return console.log(err);}
         //console.log(veggie); // prints out the veggie items from the database
-        var query = veggie.searchName;
+        var query = veggie.wikiSearchName;
         console.log(query +" is the api search query");
         request('https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&titles='+query, function (error, response, body) {
           if (!error && response.statusCode == 200) {

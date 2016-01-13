@@ -11,6 +11,7 @@ var vegSchema = new Schema({
   name: String,
   altName: String,
   searchName: String,
+  wikiSearchName: String,
   rId: [String],
   mainImgUrl: String,
   mainText: String,
