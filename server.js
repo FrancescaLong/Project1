@@ -18,7 +18,7 @@ var request = require('request');
 require('dotenv').load(); //npm install dotenv --save
 
 //keep this in the file only 1 time or the data will be duplicated in the database
-require('./models/seeds.js'); 
+//require('./models/seeds.js'); 
 
 
 //original connection
