@@ -3,17 +3,6 @@ $(document).ready(function(){
 console.log('sanity check: client-side js LOGIN.JS loaded');
 
 
-//var path = require("path"),  //npm install path --save
-// require dependencies
-var mongoose = require('mongoose'),
-    Schema = mongoose.Schema,
-    express = require('express'),
-    app = express(),
-    ejs = require('ejs');
-
-//require the module
-require('dotenv').load(); //npm install dotenv --save
-
 
 
 
@@ -42,13 +31,17 @@ require('dotenv').load(); //npm install dotenv --save
         }
     });
 
+
+
+
 });   // CLOSING TAGS
 
 
 
 
 /*
-//Wikipedia search query for their API - moved the the server.js file since we want node to work with this
+//Wikipedia search query for their API - moved the the server.js file since we want 
+    node to work with this - we need to be able identify the veggie from the URL - 
     var options = {query: query, format: "html", summaryOnly: false}; //set to true for summary only
         wikipedia.searchArticle(options, function(err, htmlWikiText){
     if(err){
