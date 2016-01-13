@@ -97,10 +97,10 @@ app.get('/vegetables/:veg_name', function(req, res) {
             // console.log("success");
             // console.log(body);
             wiki = JSON.parse(body);
-            basePageID = Object.keys(wiki.query.pages)[0];
+            basePageID = Object.keys(wiki.query.pages)[0]; // this is the specific wikipedia page Id
             //console.log(basePageID);
             // console.log(wiki.query.pages[1120742].extract); //this is the artichoke page
-            var parsedText = wiki.query.pages[basePageID];
+            var parsedText = wiki.query.pages[basePageID]; // this parses the larger return to the level we need
             //console.log(parsedText);
             res.render('veggie-show.ejs', { veggie:veggie, parsedText:parsedText} );
           } else {
